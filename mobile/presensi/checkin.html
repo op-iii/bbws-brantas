@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0B5FA5" />
+  <title>Presensi Masuk - BBWS Brantas OP III</title>
+
+  <link rel="stylesheet" href="../../assets/css/variables.css" />
+  <link rel="stylesheet" href="../../assets/css/base.css" />
+  <link rel="stylesheet" href="../../assets/css/components.css" />
+  <link rel="stylesheet" href="../../assets/css/mobile.css" />
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <div id="header-container"></div>
+
+  <main class="page">
+
+    <h1 class="page-title">Presensi Masuk</h1>
+
+    <!-- KAMERA -->
+    <div class="camera-box">
+      <video id="video" autoplay playsinline muted></video>
+      <div class="camera-overlay">
+        <div class="face-guide" id="face-guide"></div>
+      </div>
+      <div class="camera-status ok" id="camera-status">
+        <i data-lucide="scan-face"></i>
+        <span>Wajah terdeteksi</span>
+      </div>
+    </div>
+
+    <!-- INFO LOKASI -->
+    <section class="section">
+      <h3 class="section-title">Lokasi Anda</h3>
+      <div class="card">
+        <div class="info-row">
+          <i data-lucide="map-pin"></i>
+          <div>
+            <div class="info-label">Titik Tugas</div>
+            <div class="info-value">DI Baru — Pintu B1</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <i data-lucide="crosshair"></i>
+          <div>
+            <div class="info-label">Koordinat</div>
+            <div class="info-value" id="koordinat">-8.4417101, 114.1010505</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <i data-lucide="radius"></i>
+          <div>
+            <div class="info-label">Jarak dari Titik</div>
+            <div class="info-value" style="color:var(--success);">12 m (dalam radius 300 m)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JAM & STATUS -->
+    <section class="section">
+      <h3 class="section-title">Waktu</h3>
+      <div class="card">
+        <div class="info-row">
+          <i data-lucide="clock"></i>
+          <div>
+            <div class="info-label">Jam Sekarang</div>
+            <div class="info-value" id="jam-sekarang">07:45 WIB</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <i data-lucide="info"></i>
+          <div>
+            <div class="info-label">Status</div>
+            <div class="info-value" id="status-masuk" style="color:var(--success);">Tepat waktu</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODE PRESENSI -->
+    <section class="section">
+      <h3 class="section-title">Mode Presensi</h3>
+      <div class="mode-selector">
+        <button class="mode-option active" data-mode="normal">
+          <i data-lucide="map-pin" style="width:14px;height:14px;"></i>
+          Normal
+        </button>
+        <button class="mode-option" data-mode="quick_response">
+          <i data-lucide="zap" style="width:14px;height:14px;"></i>
+          Quick Response
+        </button>
+      </div>
+      <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">
+        Quick Response untuk kerja gabungan, bebas koordinat.
+      </p>
+    </section>
+
+    <!-- TOMBOL AKSI -->
+    <section class="section">
+      <button class="btn" id="btn-checkin">
+        <i data-lucide="check"></i>
+        Check In Sekarang
+      </button>
+
+      <button class="btn btn-ghost" style="margin-top:10px;" id="btn-ulangi">
+        <i data-lucide="camera"></i>
+        Ulangi Foto
+      </button>
+    </section>
+
+    <div style="height:40px;"></div>
+  </main>
+
+  <div id="bottom-menu-container"></div>
+
+  <script src="../../assets/js/components/header.js"></script>
+  <script src="../../assets/js/components/bottom-menu.js"></script>
+  <script src="../../assets/js/pages/mobile-presensi.js"></script>
+
+  <script>
+    renderHeader({ greeting: 'Presensi', nama: 'Agus Riyadi' });
+    renderBottomMenu('presensi');
+  </script>
+</body>
+</html>
