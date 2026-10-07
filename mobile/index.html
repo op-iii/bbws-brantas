@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0B5FA5" />
+  <title>Home - BBWS Brantas OP III</title>
+
+  <link rel="stylesheet" href="../assets/css/variables.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/mobile.css" />
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <div id="header-container"></div>
+
+  <main class="page">
+
+    <!-- HERO CARD -->
+    <section class="card-hero">
+      <div class="card-hero-text">
+        <h2>Selamat bekerja,<br>Agus Riyadi 👋</h2>
+        <p>NPA.05.86.09.13.016</p>
+        <p style="margin-top:6px;">DI Baru · Krosda Bangorejo</p>
+      </div>
+      <!-- Ganti src dengan foto tampilan PNG 3x4 -->
+      <img
+        src="https://via.placeholder.com/300x400/0B5FA5/FFFFFF?text=Foto+3x4"
+        alt="Foto tampilan"
+        class="card-hero-photo"
+      />
+    </section>
+
+    <!-- QUICK ACTION -->
+    <section class="quick-grid">
+      <a href="/mobile/presensi/checkin.html" class="quick-card">
+        <div class="quick-icon"><i data-lucide="clock"></i></div>
+        <div>
+          <div class="quick-label">Presensi</div>
+          <div class="quick-sub">Masuk / Pulang</div>
+        </div>
+      </a>
+
+      <a href="/mobile/laporan/agenda-harian.html" class="quick-card">
+        <div class="quick-icon yellow"><i data-lucide="file-text"></i></div>
+        <div>
+          <div class="quick-label">Laporan</div>
+          <div class="quick-sub">Agenda Harian</div>
+        </div>
+      </a>
+
+      <a href="/mobile/tugas/index.html" class="quick-card">
+        <div class="quick-icon"><i data-lucide="clipboard-list"></i></div>
+        <div>
+          <div class="quick-label">Tugas</div>
+          <div class="quick-sub">Dari Staf Pengamat</div>
+        </div>
+      </a>
+
+      <a href="/mobile/peta/index.html" class="quick-card">
+        <div class="quick-icon yellow"><i data-lucide="map"></i></div>
+        <div>
+          <div class="quick-label">Peta</div>
+          <div class="quick-sub">Pintu Saluran</div>
+        </div>
+      </a>
+    </section>
+
+    <!-- STATUS HARI INI -->
+    <section class="section">
+      <h3 class="section-title">Status Hari Ini</h3>
+      <div class="card status-list">
+        <div class="status-row">
+          <i data-lucide="check-circle"></i>
+          <span>Check-in</span>
+          <strong style="margin-left:auto;">07:45</strong>
+        </div>
+        <div class="status-row">
+          <i data-lucide="hourglass"></i>
+          <span>Check-out</span>
+          <strong style="margin-left:auto; color:var(--text-secondary);">—</strong>
+        </div>
+        <div class="status-row">
+          <i data-lucide="map-pin"></i>
+          <span>Lokasi</span>
+          <strong style="margin-left:auto;">Pintu B1</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- AGENDA HARI INI -->
+    <section class="section">
+      <h3 class="section-title">Agenda Hari Ini</h3>
+      <div class="card status-list">
+        <div class="status-row">
+          <i data-lucide="circle-dot"></i>
+          <span>08:00</span>
+          <span style="margin-left:8px;">Cek pintu B1</span>
+        </div>
+        <div class="status-row">
+          <i data-lucide="circle-dot"></i>
+          <span>10:00</span>
+          <span style="margin-left:8px;">Laporan debit</span>
+        </div>
+        <div class="status-row">
+          <i data-lucide="circle-dot"></i>
+          <span>14:00</span>
+          <span style="margin-left:8px;">Koordinasi Krosda</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="fab-container"></div>
+  <div id="bottom-menu-container"></div>
+
+  <script src="../assets/js/components/header.js"></script>
+  <script src="../assets/js/components/bottom-menu.js"></script>
+  <script src="../assets/js/components/fab.js"></script>
+
+  <script>
+    renderHeader({ greeting: 'Selamat Pagi', nama: 'Agus Riyadi' });
+    renderBottomMenu('home');
+    renderFAB('/mobile/presensi/checkin.html');
+  </script>
+</body>
+</html>
