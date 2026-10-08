@@ -19,14 +19,15 @@
   --bg:#F2F4F9;--card:#fff;--ink:#101828;--mut:#64748B;--line:#E6E9F2;
   --ok:#12A150;--warn:#E8930C;--bad:#E5484D;--info:#2F6FED;--vio:#8B5CF6;--sky:#0EA5E9;
   --sbw:17.5rem;
-  --gap:1.25rem;--gap-lg:1.75rem;
+  --gap:1.25rem;
+  --mainpad:1.75rem;
   --rad:1.25rem;--rad-lg:1.625rem;
   --sh-sm:0 1px 2px rgba(16,24,40,.05),0 8px 22px -10px rgba(16,24,40,.12);
   --sh:0 2px 4px rgba(16,24,40,.04),0 16px 40px -14px rgba(16,24,40,.16);
   --sh-lg:0 24px 60px -18px rgba(13,26,58,.30);
 }
-@media(min-width:1200px){:root{--gap:1.5rem}}
-@media(min-width:1600px){:root{--gap:1.75rem;--sbw:19rem}}
+@media(min-width:1200px){:root{--gap:1.5rem;--mainpad:3rem}}
+@media(min-width:1600px){:root{--gap:1.75rem;--sbw:19rem;--mainpad:3.25rem}}
 html{scroll-behavior:smooth}
 /* Skala otomatis layar besar */
 @media(min-width:1920px){html{font-size:17.5px}}
@@ -65,10 +66,9 @@ i[data-lucide],svg.lucide{width:1.25rem;height:1.25rem;flex:none}
 
 /* ================= SHELL / TOPBAR ================= */
 #shell{margin-left:var(--sbw);min-height:100vh;display:flex;flex-direction:column}
-main{width:100%;max-width:118rem;margin-inline:auto;padding:0 1.75rem 4rem}
-#topbar{position:sticky;top:0;z-index:70;display:flex;align-items:center;gap:.9rem;margin:0 -1.75rem 1.75rem;padding:1rem 1.75rem;background:rgba(242,244,249,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(230,233,242,.8)}
-@media(min-width:1600px){main{padding:0 2.25rem 4.5rem}#topbar{margin:0 -2.25rem 2rem;padding:1.1rem 2.25rem}}
-#btnMenu{display:none;width:2.6rem;height:2.6rem;border-radius:.8rem;background:#fff;box-shadow:var(--sh-sm);place-items:center}
+main{width:100%;max-width:118rem;margin-inline:auto;padding:0 var(--mainpad) 4rem}
+#topbar{position:sticky;top:0;z-index:70;display:flex;align-items:center;gap:1rem;margin:0 calc(var(--mainpad)*-1) 1.75rem;padding:1rem var(--mainpad);background:rgba(242,244,249,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(230,233,242,.8)}
+#btnMenu{display:none;width:2.6rem;height:2.6rem;border-radius:.8rem;background:#fff;box-shadow:var(--sh-sm);place-items:center;flex:none}
 .pg-title h1{font-size:1.35rem;font-weight:800;line-height:1.2}
 .pg-title p{font-size:.74rem;color:var(--mut);font-weight:600}
 .top-search{margin-left:auto;display:flex;align-items:center;gap:.55rem;background:#fff;border-radius:999px;padding:.6rem 1rem;width:22rem;box-shadow:var(--sh-sm);position:relative}
@@ -132,12 +132,23 @@ main{width:100%;max-width:118rem;margin-inline:auto;padding:0 1.75rem 4rem}
 .hstat svg{width:1.1rem;height:1.1rem;color:var(--navy)}
 .hstat small{display:block;font-size:.6rem;color:#8A7434;font-weight:800;letter-spacing:.4px;text-transform:uppercase}
 .hstat b{font-size:.8rem}
-.hero .pop{position:absolute;right:1.4rem;bottom:-1.4rem;height:clamp(10.5rem,8.5rem + 5vw,16rem);max-width:15rem;object-fit:contain;filter:drop-shadow(0 1.6rem 1.4rem rgba(13,26,58,.45));z-index:2}
+.hero .pop{position:absolute;right:1.4rem;bottom:-1.4rem;height:clamp(10.5rem,8.5rem + 5vw,16rem);max-width:15rem;object-fit:contain;filter:drop-shadow(0 1.6rem 1.4rem rgba(13,26,58,.45));z-index:3}
 .hero-sm{min-height:0;padding:1.5rem 1.75rem}
 .hero-sm h2{font-size:1.25rem;margin:.6rem 0 .15rem}
 .hero-sm .pop{height:9.5rem;bottom:-1rem}
+/* Mobile: foto jadi alur bawah (pop-out ke bawah, tidak menimpa teks/statistik) */
+@media(max-width:640px){
+  .hero{padding:1.35rem 1.2rem .35rem}
+  .hero .swirl{display:none}
+  .hero h2{max-width:100%;font-size:1.5rem;margin-top:.8rem}
+  .hero p{max-width:100%}
+  .hero .cta{margin-top:1rem}
+  .hero .cta .btn{flex:1}
+  .hero .pop{position:relative;display:block;right:auto;bottom:auto;height:10.5rem;max-width:10rem;margin:-1.8rem .9rem -2.4rem auto}
+  .hero-sm .pop{height:9rem;margin:-1.2rem .9rem -2rem auto}
+}
 
-/* ================= TILES (6 shortcut) ================= */
+/* ================= TILES ================= */
 .tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--gap)}
 .tile{display:flex;align-items:center;gap:.8rem;background:#fff;border:1px solid var(--line);border-radius:1.25rem;padding:1rem 1.05rem;box-shadow:var(--sh-sm);transition:.2s;cursor:pointer;min-width:0}
 .tile:hover{transform:translateY(-.2rem);box-shadow:var(--sh)}
@@ -212,29 +223,32 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 .tacts button:hover{background:var(--bg);color:var(--navy)}
 .tacts svg{width:.95rem;height:.95rem}
 
-/* ================= MAP (full width + panel samping) ================= */
-.map-split{display:grid;grid-template-columns:1fr;gap:1rem}
-@media(min-width:900px){.map-split{grid-template-columns:1.75fr 1fr;align-items:start}}
-#map{height:24rem;border-radius:1rem;z-index:1}
-@media(min-width:1200px){#map{height:29rem}}
-.map-fallback{height:100%;min-height:20rem;border-radius:1rem;background:linear-gradient(135deg,#E7ECFA,#F6EDD8);display:grid;place-items:center;color:var(--navy);font-weight:700;text-align:center;padding:1.25rem}
+/* ================= MAP FULL-BLEED (tanpa frame card) ================= */
+.mapsec{min-width:0}
+.bleed{margin-inline:calc(var(--mainpad)*-1)}
+.mapsec-head{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;padding:0 .2rem .8rem}
+.mapsec-head .ic{width:2.5rem;height:2.5rem;border-radius:.8rem;background:#EEF2FB;color:var(--navy);display:grid;place-items:center;flex:none}
+.mapsec-head h3{font-size:.95rem;font-weight:800;line-height:1.25}
+.mapsec-head small{display:block;font-size:.7rem;color:var(--mut);font-weight:600;margin-top:.1rem}
+.mapsec-head .act{margin-left:auto;display:flex;gap:.45rem;align-items:center;flex-wrap:wrap;padding-right:.2rem}
+.map-split{display:grid;grid-template-columns:1fr;gap:.9rem;align-items:start}
+@media(min-width:1000px){.map-split{grid-template-columns:1.7fr 1fr;gap:1.1rem}}
+#map{height:min(78vw,25rem);border-radius:0;z-index:1;background:#E7ECFA}
+@media(min-width:1100px){#map{height:29rem;border-radius:1.25rem;box-shadow:var(--sh-sm)}}
+.map-fallback{height:100%;min-height:18rem;background:linear-gradient(135deg,#E7ECFA,#F6EDD8);display:grid;place-items:center;color:var(--navy);font-weight:700;text-align:center;padding:1.25rem}
+@media(min-width:1100px){.map-fallback{border-radius:1.25rem}}
 .leaflet-tooltip.zone-lab{background:rgba(255,255,255,.9);border:none;font-weight:800;font-size:.65rem;color:var(--deep);box-shadow:0 .25rem .75rem rgba(0,0,0,.15);border-radius:.5rem;padding:.2rem .55rem}
 .leaflet-tooltip.gate-tip{background:var(--deep);color:#fff;border:none;font-weight:700;font-size:.68rem;border-radius:.55rem;padding:.3rem .6rem}
 .leaflet-tooltip.gate-tip::before{display:none}
 #pmap{height:13rem;border-radius:1rem;z-index:1}
-.map-side{display:flex;flex-direction:column;gap:.7rem;min-width:0}
+.map-side{display:flex;flex-direction:column;gap:.7rem;min-width:0;padding-inline:.2rem}
+@media(min-width:1000px){.map-side{padding-inline:0}}
 .gd-box{background:var(--bg);border-radius:1rem;padding:1rem 1.1rem}
 .spec{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
 .spec div{background:#fff;border-radius:.85rem;padding:.65rem .8rem}
 .spec small{font-size:.6rem;color:var(--mut);font-weight:800;text-transform:uppercase;letter-spacing:.4px}
 .spec b{font-size:.9rem;display:block;margin-top:.15rem}
 .glist{display:flex;flex-direction:column;gap:.2rem;overflow:auto;max-height:19.5rem;padding-right:.2rem}
-.grow{display:flex;align-items:center;gap:.6rem;padding:.5rem .55rem;border-radius:.7rem;text-align:left;transition:.12s}
-.grow:hover{background:#E9EDF7}
-.gdot{width:.6rem;height:.6rem;border-radius:50%;flex:none}
-.gmain{flex:1;min-width:0}
-.gmain b{font-size:.76rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.gmain small{font-size:.62rem;color:var(--mut);font-weight:600;display:block}
 
 /* ================= STATISTIK ================= */
 .donut{display:flex;flex-direction:column;align-items:center;gap:1rem}
@@ -264,11 +278,11 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 .carrow{margin-left:1.05rem;color:#C3CDE4;line-height:0}
 .carrow svg{width:1.05rem;height:1.05rem}
 
-/* ================= LAPORAN HEADER (seg + eksternal) ================= */
+/* ================= LAPORAN HEADER ================= */
 .lap-head{display:flex;align-items:center;justify-content:space-between;gap:.8rem;flex-wrap:wrap;margin-bottom:var(--gap)}
 .extrow{display:flex;gap:.55rem;flex-wrap:wrap}
 
-/* ================= LAPKIN MODAL ================= */
+/* ================= LAPKIN ================= */
 .lapkin{display:flex;flex-direction:column;gap:.7rem}
 .lk{display:flex;gap:.85rem;align-items:center;border:1.5px solid var(--line);border-radius:1rem;padding:.85rem 1rem}
 .lk.off{opacity:.55}
@@ -300,22 +314,31 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 .bio small{font-size:.6rem;color:var(--mut);font-weight:800;text-transform:uppercase;letter-spacing:.4px}
 .bio b{font-size:.85rem;display:block;margin-top:.1rem}
 
-/* ================= TABBAR ================= */
-#tabbar{position:fixed;left:0;right:0;bottom:calc(.9rem + env(safe-area-inset-bottom));display:none;justify-content:center;z-index:96;transition:transform .35s cubic-bezier(.4,0,.2,1)}
-#tabbar.hide{transform:translateY(160%)}
-#tabbar .pill{display:flex;align-items:center;gap:.2rem;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border-radius:999px;padding:.5rem .6rem;box-shadow:0 1.25rem 2.75rem rgba(13,26,58,.32);border:1px solid rgba(255,255,255,.6)}
+/* ================= TABBAR (FAB pill — selalu konsisten) ================= */
+#tabbar{position:fixed;left:50%;bottom:max(.9rem,env(safe-area-inset-bottom));transform:translateX(-50%);display:none;z-index:96;transition:transform .35s cubic-bezier(.4,0,.2,1);will-change:transform}
+#tabbar.hide{transform:translateX(-50%) translateY(190%)}
+#tabbar .pill{display:flex;align-items:center;gap:.2rem;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-radius:999px;padding:.5rem .6rem;box-shadow:0 1.25rem 2.75rem rgba(13,26,58,.32);border:1px solid rgba(255,255,255,.6)}
 #tabbar .tbtn{width:3.5rem;height:2.85rem;border-radius:1rem;display:grid;place-items:center;color:#8A94A6;transition:.15s;position:relative}
 #tabbar .tbtn.on{background:var(--navy);color:#fff;box-shadow:0 .5rem 1.1rem rgba(27,60,135,.4)}
 #tabbar .tbtn .bdg{position:absolute;top:.4rem;right:.55rem;width:.5rem;height:.5rem;border-radius:50%;background:var(--bad);display:none}
 #tabbar .tbtn .bdg.show{display:block}
 #tabbar .fab{width:3.7rem;height:3.7rem;border-radius:50%;background:linear-gradient(135deg,var(--navy),#3B62C9);color:#fff;display:grid;place-items:center;margin:-1.9rem .25rem 0;box-shadow:0 .9rem 1.6rem rgba(27,60,135,.5);border:.25rem solid #fff}
 #tabbar .fab svg{width:1.5rem;height:1.5rem}
+
+/* ================= RESPONSIVE ================= */
 @media(max-width:1099.98px){
+  :root{--mainpad:.55rem}
   #sidebar{transform:translateX(-105%)}#sidebar.open{transform:none}
   #shell{margin-left:0}#btnMenu{display:grid}
   .top-search{display:none}
-  #tabbar{display:flex}
-  main{padding-bottom:8.5rem}
+  #tabbar{display:block}
+  main{padding-bottom:calc(8.4rem + env(safe-area-inset-bottom))}
+  #topbar{margin-bottom:1.2rem}
+  .g12{gap:.7rem}
+  .card{padding:1.1rem;border-radius:1.25rem}
+  .tiles{gap:.6rem}
+  .kpis{gap:.6rem}
+  .sec{margin:.2rem 0}
 }
 
 /* ================= MODAL ================= */
@@ -362,7 +385,7 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 .msg.me{background:var(--navy);color:#fff;border-bottom-right-radius:.3rem;align-self:flex-end}
 .msg small{display:block;font-size:.62rem;opacity:.65;margin-top:.25rem;font-weight:700}
 .chatin{display:flex;gap:.55rem}.chatin input{flex:1}
-#toast{position:fixed;left:50%;bottom:6.5rem;transform:translateX(-50%) translateY(1rem);background:var(--deep);color:#fff;font-weight:700;font-size:.8rem;padding:.8rem 1.35rem;border-radius:999px;box-shadow:var(--sh-lg);opacity:0;pointer-events:none;transition:.3s;z-index:200;display:flex;gap:.55rem;align-items:center;max-width:90vw}
+#toast{position:fixed;left:50%;bottom:calc(6.4rem + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(1rem);background:var(--deep);color:#fff;font-weight:700;font-size:.8rem;padding:.8rem 1.35rem;border-radius:999px;box-shadow:var(--sh-lg);opacity:0;pointer-events:none;transition:.3s;z-index:200;display:flex;gap:.55rem;align-items:center;max-width:90vw}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 #toast svg{color:var(--gold);width:1.1rem;height:1.1rem}
 @media(min-width:1100px){#toast{bottom:2rem}}
@@ -482,11 +505,12 @@ textarea.inp{resize:vertical;min-height:5.25rem}
         <div class="sr"><span class="badge b-nav" id="mapCount">—</span></div>
       </div>
 
-      <div class="card">
-        <div class="chd">
+      <!-- PETA FULL KIRI-KANAN (tanpa frame card) -->
+      <div class="mapsec bleed">
+        <div class="mapsec-head">
           <span class="ic"><i data-lucide="map-pin"></i></span>
           <div><h3>Peta Wilayah Kerja OP3</h3><small>Klik titik di peta atau pilih dari daftar</small></div>
-          <span class="act">
+          <span class="act" id="mapChips">
             <button class="fchip on" data-ft="all">Semua</button>
             <button class="fchip" data-ft="Pintu Air">Pintu Air</button>
             <button class="fchip" data-ft="Bendung">Bendung</button>
@@ -918,10 +942,9 @@ textarea.inp{resize:vertical;min-height:5.25rem}
     </div>
   </div>
 </div>
-<!-- LAPKIN: form laporan eksternal -->
 <div class="modal" id="lapkinModal"><div class="back" data-close></div>
   <div class="box">
-    <h3><span style="display:flex;align-items:center;gap:.6rem"><span class="lic" style="width:2.4rem;height:2.4rem;border-radius:.8rem;background:#E7ECFA;color:var(--navy);display:grid;place-items:center"><i data-lucide="layers"></i></span>Lapkin — Form Eksternal</span>
+    <h3><span style="display:flex;align-items:center;gap:.6rem"><span style="width:2.4rem;height:2.4rem;border-radius:.8rem;background:#E7ECFA;color:var(--navy);display:grid;place-items:center"><i data-lucide="layers"></i></span>Lapkin — Form Eksternal</span>
     <button class="xbtn" data-close><i data-lucide="x"></i></button></h3>
     <p style="font-size:.76rem;color:var(--mut);font-weight:600;margin:-.4rem 0 1rem">Form laporan kinerja resmi via Google Forms — terbuka di tab baru.</p>
     <div class="lapkin" id="lapkinList"></div>
@@ -1003,7 +1026,6 @@ let EMP=[
  ['NPK.06.86.20.20.019','ANANG MUSTAKIM','Pekarya Pengairan','DI Kali Setail']
 ].map(e=>({nip:e[0],nama:e[1],jabatan:e[2],di:e[3]}));
 
-/* Lapkin — form laporan eksternal (tambah item baru di sini saat DI lain tersedia) */
 const LAPKIN=[
  {n:'Form PPA — DI Baru',d:'Laporan kinerja Petugas Pintu Air',aud:'ppa',di:'DI Baru',
   url:'https://docs.google.com/forms/d/e/1FAIpQLSfQ1eixMkD50pJ5Uz6T0Qf3qkm6lhlfdimWyhnb6QBxLXGsIw/viewform'},
@@ -1171,7 +1193,7 @@ function updDist(ll){const d=pmap.distance(ll,office);
  navigator.geolocation.getCurrentPosition(p=>{const ll=[p.coords.latitude,p.coords.longitude];
   userMk.setLatLng(ll);pmap.setView(ll,16);updDist(ll);},()=>toast('Izin lokasi ditolak — memakai posisi demo'));};
 
-/* --- Panel samping peta: daftar titik & detail --- */
+/* --- Panel samping peta --- */
 function renderGateSide(){
  const GL=GATES.filter(g=>S.ft==='all'||g.tipe===S.ft);
  $('#gateDetail').innerHTML=`
@@ -1197,7 +1219,7 @@ function renderGateSide(){
 function selectGate(g){
  if(map)map.flyTo(g.coord,14,{duration:.8});
  $('#gateDetail').innerHTML=`
-  <button class="btn btn-o" onclick="window.backGates()" style="padding:.55rem .8rem;font-size:.76rem"><i data-lucide="arrow-left"></i>Semua Titik</button>
+  <button class="btn btn-o" onclick="window.backGates()" style="padding:.55rem .8rem;font-size:.76rem;align-self:flex-start"><i data-lucide="arrow-left"></i>Semua Titik</button>
   <div class="gd-box">
    <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem">
     <b style="font-size:.95rem">${g.kode}</b><span class="badge ${bcl(g.kond)}">${g.kond}</span></div>
@@ -1222,7 +1244,8 @@ function selectGate(g){
  icons();}
 window.backGates=()=>{if(map)map.flyTo([-8.462,114.165],12,{duration:.8});renderGateSide();};
 window.__gd=kode=>{go('dashboard');setTimeout(()=>{const g=GATES.find(x=>x.kode===kode);if(g)selectGate(g);},180);};
- $$('.fchip').forEach(c=>c.onclick=()=>{$$('.fchip').forEach(x=>x.classList.remove('on'));c.classList.add('on');
+ $('#mapChips').querySelectorAll('.fchip').forEach(c=>c.onclick=()=>{
+ $('#mapChips').querySelectorAll('.fchip').forEach(x=>x.classList.remove('on'));c.classList.add('on');
  S.ft=c.dataset.ft;
  glayers.forEach(({g,m})=>{const vis=S.ft==='all'||g.tipe===S.ft;
   if(vis&&!map.hasLayer(m))m.addTo(map);if(!vis&&map.hasLayer(m))map.removeLayer(m);});
