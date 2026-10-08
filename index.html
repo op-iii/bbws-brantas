@@ -28,7 +28,7 @@
 @media(min-width:1200px){:root{--gap:1.5rem}}
 @media(min-width:1600px){:root{--gap:1.75rem;--sbw:19rem}}
 html{scroll-behavior:smooth}
-/* Skala otomatis untuk layar besar */
+/* Skala otomatis layar besar */
 @media(min-width:1920px){html{font-size:17.5px}}
 @media(min-width:2300px){html{font-size:19px}}
 @media(min-width:2800px){html{font-size:21px}}
@@ -51,7 +51,7 @@ i[data-lucide],svg.lucide{width:1.25rem;height:1.25rem;flex:none}
 .nav a.on{background:linear-gradient(90deg,rgba(255,194,14,.16),rgba(255,194,14,.05));color:#fff;box-shadow:inset 0 0 0 1px rgba(255,194,14,.25)}
 .nav a.on svg{color:var(--gold)}
 .nav .sp{height:.8rem;flex:none}
-.rolebox{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:1rem;padding:.8rem;margin:.8rem 0 .8rem}
+.rolebox{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:1rem;padding:.8rem;margin:.8rem 0}
 .rolebox label{font-size:.62rem;font-weight:800;letter-spacing:.6px;color:#8FA0C6;text-transform:uppercase;display:block;margin-bottom:.45rem}
 .rolebox select{width:100%;background:#0B1530;color:#fff;border:1px solid rgba(255,255,255,.14);border-radius:.7rem;padding:.55rem .65rem;font-weight:600;font-size:.78rem;outline:none}
 .prof{display:flex;align-items:center;gap:.7rem;background:rgba(255,255,255,.05);border-radius:1rem;padding:.7rem}
@@ -89,13 +89,12 @@ main{width:100%;max-width:118rem;margin-inline:auto;padding:0 1.75rem 4rem}
 .nrow b{font-size:.8rem}.nrow p{font-size:.76rem;color:var(--mut);margin-top:.1rem}
 .nrow time{font-size:.66rem;color:#98A2B3;font-weight:700;margin-left:auto;flex:none}
 
-/* ================= GRID 12 KOLOM ================= */
+/* ================= GRID 12 ================= */
 .g12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap)}
 .g12>*{grid-column:span 12;min-width:0}
 @media(min-width:1200px){
   .sp3{grid-column:span 3}.sp4{grid-column:span 4}.sp5{grid-column:span 5}
   .sp6{grid-column:span 6}.sp7{grid-column:span 7}.sp8{grid-column:span 8}
-  .rs2{grid-row:span 2}
 }
 @media(min-width:760px) and (max-width:1199.98px){.sp6m{grid-column:span 6}}
 
@@ -107,7 +106,7 @@ main{width:100%;max-width:118rem;margin-inline:auto;padding:0 1.75rem 4rem}
 .sec p{font-size:.74rem;color:var(--mut);font-weight:600}
 .sec .sr{margin-left:auto;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
 
-/* ================= CARD & HEADER ================= */
+/* ================= CARD ================= */
 .page{display:none}.page.active{display:block;animation:fade .28s ease}
 @keyframes fade{from{opacity:0;transform:translateY(.5rem)}to{opacity:1;transform:none}}
 .card{background:var(--card);border-radius:var(--rad-lg);box-shadow:var(--sh);padding:1.375rem;border:1px solid #EDF0F7}
@@ -121,7 +120,7 @@ main{width:100%;max-width:118rem;margin-inline:auto;padding:0 1.75rem 4rem}
 .chd small{display:block;font-size:.7rem;color:var(--mut);font-weight:600;margin-top:.1rem}
 .chd .act{margin-left:auto;display:flex;gap:.45rem;align-items:center;flex-wrap:wrap}
 
-/* ================= HERO POP-OUT ================= */
+/* ================= HERO ================= */
 .hero{position:relative;background:linear-gradient(115deg,#F9F1DF,#F2E3C4 48%,#E9D2A2);border-radius:var(--rad-lg);padding:1.75rem 2rem;box-shadow:var(--sh);overflow:visible;height:100%}
 .hero .swirl{position:absolute;right:10rem;top:-2rem;width:12rem;opacity:.5;pointer-events:none}
 .hero .tag{display:inline-flex;align-items:center;gap:.45rem;background:rgba(13,26,58,.9);color:#FFD75E;font-size:.66rem;font-weight:800;letter-spacing:.8px;padding:.45rem .8rem;border-radius:999px}
@@ -138,22 +137,25 @@ main{width:100%;max-width:118rem;margin-inline:auto;padding:0 1.75rem 4rem}
 .hero-sm h2{font-size:1.25rem;margin:.6rem 0 .15rem}
 .hero-sm .pop{height:9.5rem;bottom:-1rem}
 
-/* ================= TILES / KPI ================= */
-.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);height:100%;align-content:start}
-.tile{display:flex;align-items:center;gap:.9rem;background:#fff;border:1px solid var(--line);border-radius:1.25rem;padding:1.05rem 1.15rem;box-shadow:var(--sh-sm);transition:.2s;cursor:pointer;min-width:0}
+/* ================= TILES (6 shortcut) ================= */
+.tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--gap)}
+.tile{display:flex;align-items:center;gap:.8rem;background:#fff;border:1px solid var(--line);border-radius:1.25rem;padding:1rem 1.05rem;box-shadow:var(--sh-sm);transition:.2s;cursor:pointer;min-width:0}
 .tile:hover{transform:translateY(-.2rem);box-shadow:var(--sh)}
+a.tile{text-decoration:none;color:inherit}
 .tile .tic{width:2.9rem;height:2.9rem;border-radius:.9rem;display:grid;place-items:center;flex:none}
-.tile b{font-size:.85rem;display:block;line-height:1.25}
-.tile small{font-size:.68rem;color:var(--mut);font-weight:600}
-.tile .arr{margin-left:auto;color:#C3CDE4}
+.tile b{font-size:.82rem;display:block;line-height:1.25}
+.tile small{font-size:.66rem;color:var(--mut);font-weight:600}
+.tile .arr{margin-left:auto;color:#C3CDE4;width:1.05rem;height:1.05rem;flex:none}
+@media(max-width:1399.98px){.tiles{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:860px){.tiles{grid-template-columns:repeat(2,1fr)}}
 .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
 .kpi{background:#fff;border:1px solid var(--line);border-radius:var(--rad);box-shadow:var(--sh-sm);padding:1.1rem 1.2rem}
 .kpi .kt{display:flex;align-items:center;justify-content:space-between;margin-bottom:.45rem}
 .kpi small{font-size:.64rem;font-weight:800;letter-spacing:.5px;color:var(--mut)}
 .kpi b{font-size:1.45rem;font-weight:800;line-height:1.1}
 .kpi .kd{font-size:.7rem;font-weight:700;color:var(--mut);margin-top:.35rem}
-@media(max-width:1199.98px){.tiles,.kpis{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.tiles,.kpis{grid-template-columns:1fr 1fr}}
+@media(max-width:1199.98px){.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.kpis{grid-template-columns:1fr 1fr}}
 
 /* ================= BADGE / BTN / CHIP ================= */
 .badge{font-size:.68rem;font-weight:800;padding:.28rem .65rem;border-radius:999px;white-space:nowrap;display:inline-block}
@@ -189,7 +191,7 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 .f2{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
 @media(max-width:520px){.f2{grid-template-columns:1fr}}
 
-/* ================= LIST ROW / TABLE ================= */
+/* ================= LIST / TABLE ================= */
 .rrow{display:flex;align-items:center;gap:.8rem;padding:.75rem .3rem;border-bottom:1px solid var(--line)}
 .rrow:last-child{border-bottom:none}
 .rrow:hover{background:#FAFBFE}
@@ -210,24 +212,29 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 .tacts button:hover{background:var(--bg);color:var(--navy)}
 .tacts svg{width:.95rem;height:.95rem}
 
-/* ================= MAP ================= */
-.mapcard{display:flex;flex-direction:column}
-#map{height:20rem;border-radius:1rem;z-index:1}
-@media(min-width:1200px){.mapcard #map{flex:1;min-height:26rem;height:auto}}
+/* ================= MAP (full width + panel samping) ================= */
+.map-split{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:900px){.map-split{grid-template-columns:1.75fr 1fr;align-items:start}}
+#map{height:24rem;border-radius:1rem;z-index:1}
+@media(min-width:1200px){#map{height:29rem}}
 .map-fallback{height:100%;min-height:20rem;border-radius:1rem;background:linear-gradient(135deg,#E7ECFA,#F6EDD8);display:grid;place-items:center;color:var(--navy);font-weight:700;text-align:center;padding:1.25rem}
 .leaflet-tooltip.zone-lab{background:rgba(255,255,255,.9);border:none;font-weight:800;font-size:.65rem;color:var(--deep);box-shadow:0 .25rem .75rem rgba(0,0,0,.15);border-radius:.5rem;padding:.2rem .55rem}
 .leaflet-tooltip.gate-tip{background:var(--deep);color:#fff;border:none;font-weight:700;font-size:.68rem;border-radius:.55rem;padding:.3rem .6rem}
 .leaflet-tooltip.gate-tip::before{display:none}
 #pmap{height:13rem;border-radius:1rem;z-index:1}
-#gateDetail{margin-top:1rem;display:none}
-#gateDetail.show{display:block;animation:fade .25s}
-.gd-grid{display:grid;grid-template-columns:1fr;gap:.9rem}
-@media(min-width:760px){.gd-grid{grid-template-columns:1.35fr 1fr}}
+.map-side{display:flex;flex-direction:column;gap:.7rem;min-width:0}
 .gd-box{background:var(--bg);border-radius:1rem;padding:1rem 1.1rem}
 .spec{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
 .spec div{background:#fff;border-radius:.85rem;padding:.65rem .8rem}
 .spec small{font-size:.6rem;color:var(--mut);font-weight:800;text-transform:uppercase;letter-spacing:.4px}
 .spec b{font-size:.9rem;display:block;margin-top:.15rem}
+.glist{display:flex;flex-direction:column;gap:.2rem;overflow:auto;max-height:19.5rem;padding-right:.2rem}
+.grow{display:flex;align-items:center;gap:.6rem;padding:.5rem .55rem;border-radius:.7rem;text-align:left;transition:.12s}
+.grow:hover{background:#E9EDF7}
+.gdot{width:.6rem;height:.6rem;border-radius:50%;flex:none}
+.gmain{flex:1;min-width:0}
+.gmain b{font-size:.76rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gmain small{font-size:.62rem;color:var(--mut);font-weight:600;display:block}
 
 /* ================= STATISTIK ================= */
 .donut{display:flex;flex-direction:column;align-items:center;gap:1rem}
@@ -238,7 +245,15 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 .legend i{width:.7rem;height:.7rem;border-radius:.25rem;display:inline-block}
 .dt1{font-size:1.6rem;font-weight:800;fill:var(--ink)}.dt2{font-size:.55rem;fill:var(--mut);font-weight:800;letter-spacing:.5px}
 
-/* ================= RANTAI DEBIT / MINI ================= */
+/* ================= MINI / CHAIN ================= */
+.mini{display:flex;flex-direction:column}
+.mrow{display:flex;align-items:center;gap:.8rem;padding:.72rem 0;border-bottom:1px dashed var(--line)}
+.mrow:last-child{border-bottom:none;padding-bottom:0}
+.mic{width:2.4rem;height:2.4rem;border-radius:.75rem;display:grid;place-items:center;flex:none}
+.mic svg{width:1.05rem;height:1.05rem}
+.mrow small{display:block;font-size:.62rem;color:var(--mut);font-weight:800;text-transform:uppercase;letter-spacing:.3px}
+.mrow b{font-size:.85rem}
+.mrow .mv{margin-left:auto;text-align:right}
 .chain{display:flex;flex-direction:column}
 .cnode{display:flex;align-items:center;gap:.75rem;padding:.6rem .15rem}
 .cnode .cd{width:2.25rem;height:2.25rem;border-radius:.75rem;display:grid;place-items:center;flex:none}
@@ -248,20 +263,24 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 .cnode .cv{margin-left:auto;font-weight:800;color:var(--navy);font-size:.82rem;text-align:right}
 .carrow{margin-left:1.05rem;color:#C3CDE4;line-height:0}
 .carrow svg{width:1.05rem;height:1.05rem}
-.mini{display:flex;flex-direction:column}
-.mrow{display:flex;align-items:center;gap:.8rem;padding:.72rem 0;border-bottom:1px dashed var(--line)}
-.mrow:last-child{border-bottom:none;padding-bottom:0}
-.mic{width:2.4rem;height:2.4rem;border-radius:.75rem;display:grid;place-items:center;flex:none}
-.mic svg{width:1.05rem;height:1.05rem}
-.mrow small{display:block;font-size:.62rem;color:var(--mut);font-weight:800;text-transform:uppercase;letter-spacing:.3px}
-.mrow b{font-size:.85rem}
-.mrow .mv{margin-left:auto;text-align:right}
+
+/* ================= LAPORAN HEADER (seg + eksternal) ================= */
+.lap-head{display:flex;align-items:center;justify-content:space-between;gap:.8rem;flex-wrap:wrap;margin-bottom:var(--gap)}
+.extrow{display:flex;gap:.55rem;flex-wrap:wrap}
+
+/* ================= LAPKIN MODAL ================= */
+.lapkin{display:flex;flex-direction:column;gap:.7rem}
+.lk{display:flex;gap:.85rem;align-items:center;border:1.5px solid var(--line);border-radius:1rem;padding:.85rem 1rem}
+.lk.off{opacity:.55}
+.lk .lic{width:2.75rem;height:2.75rem;border-radius:.85rem;display:grid;place-items:center;flex:none}
+.lk b{font-size:.84rem;display:block}
+.lk small{color:var(--mut);font-weight:600;font-size:.7rem}
 
 /* ================= PRESENSI ================= */
 .pclock{font-size:2.5rem;font-weight:800;letter-spacing:.05em;color:var(--navy);font-variant-numeric:tabular-nums;line-height:1.1}
 .statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
 
-/* ================= RAPORT BARS ================= */
+/* ================= RAPORT ================= */
 .bar{margin-bottom:.9rem}.bar:last-child{margin-bottom:0}
 .bar .bt{display:flex;justify-content:space-between;font-size:.78rem;font-weight:700;margin-bottom:.4rem}
 .bar .bt span{color:var(--mut)}
@@ -281,7 +300,7 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 .bio small{font-size:.6rem;color:var(--mut);font-weight:800;text-transform:uppercase;letter-spacing:.4px}
 .bio b{font-size:.85rem;display:block;margin-top:.1rem}
 
-/* ================= TABBAR (FAB PILL) ================= */
+/* ================= TABBAR ================= */
 #tabbar{position:fixed;left:0;right:0;bottom:calc(.9rem + env(safe-area-inset-bottom));display:none;justify-content:center;z-index:96;transition:transform .35s cubic-bezier(.4,0,.2,1)}
 #tabbar.hide{transform:translateY(160%)}
 #tabbar .pill{display:flex;align-items:center;gap:.2rem;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border-radius:999px;padding:.5rem .6rem;box-shadow:0 1.25rem 2.75rem rgba(13,26,58,.32);border:1px solid rgba(255,255,255,.6)}
@@ -425,35 +444,57 @@ textarea.inp{resize:vertical;min-height:5.25rem}
           </div>
           <div class="hero-stats">
             <div class="hstat"><i data-lucide="waves"></i><div><small>Debit Bendung</small><b id="hsDebit">—</b></div></div>
-            <div class="hstat"><i data-lucide="map-pin"></i><div><small>Titik Pantau</small><b>22 lokasi</b></div></div>
+            <div class="hstat"><i data-lucide="map-pin"></i><div><small>Titik Pantau</small><b id="hsTitik">—</b></div></div>
             <div class="hstat"><i data-lucide="clipboard-check"></i><div><small>Laporan Bulan Ini</small><b>46 dokumen</b></div></div>
           </div>
           <img class="pop" id="heroImg" alt="Petugas" src="assets/hero-petugas.webp">
         </div>
       </div>
 
-      <div class="sp4 rs2">
-        <div class="card mapcard">
-          <div class="chd">
-            <span class="ic"><i data-lucide="map-pin"></i></span>
-            <div><h3>Peta Wilayah Kerja OP3</h3><small>Klik titik untuk spesifikasi & petugas</small></div>
-            <span class="act">
-              <button class="fchip on" data-ft="all">Semua</button>
-              <button class="fchip" data-ft="Pintu Air">Pintu Air</button>
-              <button class="fchip" data-ft="Bendung">Bendung</button>
-            </span>
+      <div class="sp4">
+        <div class="card">
+          <div class="chd"><span class="ic green"><i data-lucide="gauge"></i></span>
+            <div><h3>Ringkasan Hari Ini</h3><small>Status singkat Anda</small></div></div>
+          <div class="mini">
+            <div class="mrow"><span class="mic" style="background:#EEF2FB;color:var(--navy)"><i data-lucide="fingerprint"></i></span>
+              <div><small>Presensi</small><b id="mPres">—</b></div><span class="badge b-mut mv" id="mPresB">—</span></div>
+            <div class="mrow"><span class="mic" style="background:#FEF3DC;color:#B45309"><i data-lucide="file-text"></i></span>
+              <div><small>Laporan Bulan Ini</small><b id="mLap">—</b></div><span class="badge b-nav mv">Aktif</span></div>
+            <div class="mrow"><span class="mic" style="background:#EFEAFE;color:var(--vio)"><i data-lucide="list-checks"></i></span>
+              <div><small>Tugas</small><b id="mTugas">—</b></div><span class="badge b-vio mv">Berjalan</span></div>
           </div>
-          <div id="map"></div>
-          <div id="gateDetail"></div>
         </div>
       </div>
 
-      <div class="sp8" style="align-self:start">
-        <div class="tiles">
-          <div class="tile" data-page="laporan"><div class="tic" style="background:#E7ECFA;color:var(--navy)"><i data-lucide="clipboard-pen"></i></div><div><b>Laporan Harian</b><small>Form & riwayat</small></div><i data-lucide="chevron-right" class="arr"></i></div>
-          <div class="tile" id="scPob"><div class="tic" style="background:#FEF3DC;color:#B45309"><i data-lucide="waves"></i></div><div><b>Debit Bendung</b><small>Laporan POB</small></div><i data-lucide="chevron-right" class="arr"></i></div>
-          <div class="tile" data-page="presensi"><div class="tic" style="background:#E6F7EE;color:var(--ok)"><i data-lucide="fingerprint"></i></div><div><b>E-Presensi</b><small>Check in / out</small></div><i data-lucide="chevron-right" class="arr"></i></div>
-          <div class="tile" id="scChat"><div class="tic" style="background:#EFEAFE;color:var(--vio)"><i data-lucide="messages-square"></i></div><div><b>Chat Pimpinan</b><small id="chatCount">—</small></div><i data-lucide="chevron-right" class="arr"></i></div>
+      <!-- SHORTCUT (6) -->
+      <div class="tiles">
+        <div class="tile" data-page="laporan"><div class="tic" style="background:#E7ECFA;color:var(--navy)"><i data-lucide="clipboard-pen"></i></div><div><b>Laporan Harian</b><small>Form & riwayat</small></div><i data-lucide="chevron-right" class="arr"></i></div>
+        <div class="tile" id="scPob"><div class="tic" style="background:#FEF3DC;color:#B45309"><i data-lucide="waves"></i></div><div><b>Debit Bendung</b><small>Laporan POB</small></div><i data-lucide="chevron-right" class="arr"></i></div>
+        <div class="tile" data-page="presensi"><div class="tic" style="background:#E6F7EE;color:var(--ok)"><i data-lucide="fingerprint"></i></div><div><b>E-Presensi</b><small>Check in / out</small></div><i data-lucide="chevron-right" class="arr"></i></div>
+        <div class="tile" id="scChat"><div class="tic" style="background:#EFEAFE;color:var(--vio)"><i data-lucide="messages-square"></i></div><div><b>Chat Pimpinan</b><small id="chatCount">—</small></div><i data-lucide="chevron-right" class="arr"></i></div>
+        <a class="tile" href="https://perizinansda.pu.go.id/" target="_blank" rel="noopener"><div class="tic" style="background:#DFF4FD;color:#0369A1"><i data-lucide="globe"></i></div><div><b>SIP SDA</b><small>Perizinan SDA PUPR</small></div><i data-lucide="external-link" class="arr"></i></a>
+        <div class="tile" id="scLapkin"><div class="tic" style="background:#FDE7E9;color:#B4232A"><i data-lucide="layers"></i></div><div><b>Lapkin</b><small>Form laporan eksternal</small></div><i data-lucide="chevron-right" class="arr"></i></div>
+      </div>
+
+      <div class="sec">
+        <span class="sic" style="background:linear-gradient(135deg,#0EA5E9,#38BDF8)"><i data-lucide="map"></i></span>
+        <div><h2>Peta Wilayah & Pantauan</h2><p>Spesifikasi titik, debit rencana, dan petugas pengelola</p></div>
+        <div class="sr"><span class="badge b-nav" id="mapCount">—</span></div>
+      </div>
+
+      <div class="card">
+        <div class="chd">
+          <span class="ic"><i data-lucide="map-pin"></i></span>
+          <div><h3>Peta Wilayah Kerja OP3</h3><small>Klik titik di peta atau pilih dari daftar</small></div>
+          <span class="act">
+            <button class="fchip on" data-ft="all">Semua</button>
+            <button class="fchip" data-ft="Pintu Air">Pintu Air</button>
+            <button class="fchip" data-ft="Bendung">Bendung</button>
+          </span>
+        </div>
+        <div class="map-split">
+          <div id="map"></div>
+          <aside class="map-side" id="gateDetail"></aside>
         </div>
       </div>
 
@@ -462,21 +503,21 @@ textarea.inp{resize:vertical;min-height:5.25rem}
         <div><h2>Aktivitas & Tindakan</h2><p>Persetujuan, tugas, dan rantai debit</p></div>
       </div>
 
-      <div class="card" data-roles="pengamat">
+      <div class="card sp6" data-roles="pengamat">
         <div class="chd"><span class="ic gold"><i data-lucide="badge-check"></i></span>
           <div><h3>Persetujuan Laporan & Presensi</h3><small>Verifikasi sebagai Staf Pengamat</small></div>
           <span class="act"><span class="badge b-warn" id="appCount"></span></span></div>
         <div id="appList" class="split-2"></div>
       </div>
 
-      <div class="card" data-roles="pimpinan">
+      <div class="card sp6" data-roles="pimpinan">
         <div class="chd"><span class="ic"><i data-lucide="scan-search"></i></span>
           <div><h3>Laporan Semua D.I</h3><small>Pantau & mention petugas lintas daerah irigasi</small></div></div>
         <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.8rem" id="repChips"></div>
         <div id="allRepList" class="split-2"></div>
       </div>
 
-      <div class="card sp8" data-roles="pob">
+      <div class="card sp6" data-roles="pob">
         <div class="chd"><span class="ic gold"><i data-lucide="waves"></i></span>
           <div><h3>Laporan Debit — Bendung Utama</h3><small>Data hulu menjadi acuan PPA di hilir</small></div></div>
         <form id="debitForm">
@@ -488,33 +529,20 @@ textarea.inp{resize:vertical;min-height:5.25rem}
           <button class="btn btn-n" style="width:100%"><i data-lucide="send"></i>Kirim Laporan Debit</button>
         </form>
       </div>
-      <div class="card sp4" data-roles="pob">
+      <div class="card sp6" data-roles="pob">
         <div class="chd"><span class="ic gold"><i data-lucide="history"></i></span>
           <div><h3>Pencatatan Terakhir</h3><small>Debit & TMA terkini</small></div></div>
         <div id="dlog"></div>
       </div>
 
-      <div class="card sp4">
-        <div class="chd"><span class="ic green"><i data-lucide="gauge"></i></span>
-          <div><h3>Ringkasan Hari Ini</h3><small>Status singkat Anda</small></div></div>
-        <div class="mini">
-          <div class="mrow"><span class="mic" style="background:#EEF2FB;color:var(--navy)"><i data-lucide="fingerprint"></i></span>
-            <div><small>Presensi</small><b id="mPres">—</b></div><span class="badge b-mut mv" id="mPresB">—</span></div>
-          <div class="mrow"><span class="mic" style="background:#FEF3DC;color:#B45309"><i data-lucide="file-text"></i></span>
-            <div><small>Laporan Bulan Ini</small><b id="mLap">—</b></div><span class="badge b-nav mv">Aktif</span></div>
-          <div class="mrow"><span class="mic" style="background:#EFEAFE;color:var(--vio)"><i data-lucide="list-checks"></i></span>
-            <div><small>Tugas</small><b id="mTugas">—</b></div><span class="badge b-vio mv">Berjalan</span></div>
-        </div>
-      </div>
-
-      <div class="card sp4">
+      <div class="card sp6">
         <div class="chd"><span class="ic vio"><i data-lucide="list-checks"></i></span>
           <div><h3>Tugas Saya</h3><small>Dari pimpinan & pengamat</small></div>
           <span class="act"><button class="btn btn-o" style="padding:.45rem .8rem;font-size:.72rem" id="btnTugas" data-roles="pengamat,pimpinan"><i data-lucide="plus"></i>Beri</button></span></div>
         <div id="tugasList"></div>
       </div>
 
-      <div class="card sp4">
+      <div class="card sp6">
         <div class="chd"><span class="ic"><i data-lucide="git-branch"></i></span>
           <div><h3>Rantai Debit</h3><small>Hulu → hilir</small></div></div>
         <div class="chain" id="chainList"></div>
@@ -573,13 +601,19 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 
   <!-- ============ LAPORAN KINERJA ============ -->
   <section id="pg-laporan" class="page">
-    <div class="g12"><div class="g">
-      <div class="seg" id="segLap">
-        <button class="on" data-seg="harian"><i data-lucide="sun"></i>Harian</button>
-        <button data-seg="bulanan"><i data-lucide="calendar"></i>Bulanan</button>
-        <button data-seg="tahunan"><i data-lucide="calendar-range"></i>Tahunan</button>
+    <div class="g12">
+      <div class="lap-head">
+        <div class="seg" id="segLap">
+          <button class="on" data-seg="harian"><i data-lucide="sun"></i>Harian</button>
+          <button data-seg="bulanan"><i data-lucide="calendar"></i>Bulanan</button>
+          <button data-seg="tahunan"><i data-lucide="calendar-range"></i>Tahunan</button>
+        </div>
+        <div class="extrow">
+          <a class="btn btn-o" href="https://smopi.info/" target="_blank" rel="noopener"><i data-lucide="external-link"></i>SMOPI</a>
+          <button class="btn btn-n" id="btnLapkin2"><i data-lucide="layers"></i>Lapkin</button>
+        </div>
       </div>
-    </div></div>
+    </div>
     <div data-segwrap="segLap">
       <div data-pane="harian" class="show">
         <div class="g12">
@@ -616,13 +650,11 @@ textarea.inp{resize:vertical;min-height:5.25rem}
       </div>
       <div data-pane="bulanan">
         <div class="g12">
-          <div class="g">
-            <div class="kpis">
-              <div class="kpi"><div class="kt"><small>TOTAL LAPORAN</small><span class="badge b-nav">Sep</span></div><b>326</b><div class="kd">+12 dari bulan lalu</div></div>
-              <div class="kpi"><div class="kt"><small>DISETUJUI</small><span class="badge b-ok">91%</span></div><b style="color:var(--ok)">298</b><div class="kd">verifikasi pengamat</div></div>
-              <div class="kpi"><div class="kt"><small>PERLU REVISI</small><span class="badge b-warn">9%</span></div><b style="color:var(--warn)">28</b><div class="kd">lengkapi foto & TMA</div></div>
-              <div class="kpi"><div class="kt"><small>DEBIT RATA²</small><span class="badge b-sky">Normal</span></div><b style="color:var(--navy)">112,4 <small style="font-size:.7rem">lt/dtk</small></b><div class="kd">sesuai kebutuhan baku</div></div>
-            </div>
+          <div class="kpis">
+            <div class="kpi"><div class="kt"><small>TOTAL LAPORAN</small><span class="badge b-nav">Sep</span></div><b>326</b><div class="kd">+12 dari bulan lalu</div></div>
+            <div class="kpi"><div class="kt"><small>DISETUJUI</small><span class="badge b-ok">91%</span></div><b style="color:var(--ok)">298</b><div class="kd">verifikasi pengamat</div></div>
+            <div class="kpi"><div class="kt"><small>PERLU REVISI</small><span class="badge b-warn">9%</span></div><b style="color:var(--warn)">28</b><div class="kd">lengkapi foto & TMA</div></div>
+            <div class="kpi"><div class="kt"><small>DEBIT RATA²</small><span class="badge b-sky">Normal</span></div><b style="color:var(--navy)">112,4 <small style="font-size:.7rem">lt/dtk</small></b><div class="kd">sesuai kebutuhan baku</div></div>
           </div>
           <div class="card">
             <div class="chd"><span class="ic"><i data-lucide="chart-column"></i></span>
@@ -655,14 +687,12 @@ textarea.inp{resize:vertical;min-height:5.25rem}
         <div><h2>E-Presensi OP3</h2><p>Check in/out dengan verifikasi selfie & lokasi</p></div>
       </div>
 
-      <div class="sp12">
-        <div class="hero hero-sm">
-          <svg class="swirl" style="right:8rem;width:9rem;top:-1.5rem" viewBox="0 0 200 160" fill="none"><rect x="20" y="10" width="120" height="60" rx="30" stroke="#1B3C87" stroke-width="14"/><rect x="60" y="70" width="120" height="60" rx="30" stroke="#1B3C87" stroke-width="14"/></svg>
-          <span class="tag"><i data-lucide="fingerprint" style="width:.85rem;height:.85rem"></i> E-PRESENSI OP3</span>
-          <h2 id="pGreet">Hai 👋</h2>
-          <p id="pDate">—</p>
-          <img class="pop" id="heroImg2" alt="Petugas" src="assets/hero-petugas.webp">
-        </div>
+      <div class="hero hero-sm">
+        <svg class="swirl" style="right:8rem;width:9rem;top:-1.5rem" viewBox="0 0 200 160" fill="none"><rect x="20" y="10" width="120" height="60" rx="30" stroke="#1B3C87" stroke-width="14"/><rect x="60" y="70" width="120" height="60" rx="30" stroke="#1B3C87" stroke-width="14"/></svg>
+        <span class="tag"><i data-lucide="fingerprint" style="width:.85rem;height:.85rem"></i> E-PRESENSI OP3</span>
+        <h2 id="pGreet">Hai 👋</h2>
+        <p id="pDate">—</p>
+        <img class="pop" id="heroImg2" alt="Petugas" src="assets/hero-petugas.webp">
       </div>
 
       <div class="card sp6m" style="text-align:center;padding:1.75rem">
@@ -813,10 +843,10 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 
   <!-- ============ ADMIN ============ -->
   <section id="pg-admin" class="page" data-roles="admin">
-    <div class="g12"><div class="g"><div class="seg" id="segAdm">
+    <div class="g12"><div class="seg" id="segAdm">
       <button class="on" data-seg="emp"><i data-lucide="users"></i>Pegawai</button>
       <button data-seg="aset"><i data-lucide="database"></i>Aset & Struktur</button>
-    </div></div></div>
+    </div></div>
     <div data-segwrap="segAdm">
       <div data-pane="emp" class="show">
         <div class="card">
@@ -886,6 +916,15 @@ textarea.inp{resize:vertical;min-height:5.25rem}
       <button class="btn btn-o" style="flex:1" id="btnRetake"><i data-lucide="refresh-ccw"></i>Ulangi</button>
       <button class="btn btn-n" style="flex:1" id="btnSend"><i data-lucide="check-check"></i>Kirim Presensi</button>
     </div>
+  </div>
+</div>
+<!-- LAPKIN: form laporan eksternal -->
+<div class="modal" id="lapkinModal"><div class="back" data-close></div>
+  <div class="box">
+    <h3><span style="display:flex;align-items:center;gap:.6rem"><span class="lic" style="width:2.4rem;height:2.4rem;border-radius:.8rem;background:#E7ECFA;color:var(--navy);display:grid;place-items:center"><i data-lucide="layers"></i></span>Lapkin — Form Eksternal</span>
+    <button class="xbtn" data-close><i data-lucide="x"></i></button></h3>
+    <p style="font-size:.76rem;color:var(--mut);font-weight:600;margin:-.4rem 0 1rem">Form laporan kinerja resmi via Google Forms — terbuka di tab baru.</p>
+    <div class="lapkin" id="lapkinList"></div>
   </div>
 </div>
 <div class="modal" id="cutiModal"><div class="back" data-close></div>
@@ -964,6 +1003,19 @@ let EMP=[
  ['NPK.06.86.20.20.019','ANANG MUSTAKIM','Pekarya Pengairan','DI Kali Setail']
 ].map(e=>({nip:e[0],nama:e[1],jabatan:e[2],di:e[3]}));
 
+/* Lapkin — form laporan eksternal (tambah item baru di sini saat DI lain tersedia) */
+const LAPKIN=[
+ {n:'Form PPA — DI Baru',d:'Laporan kinerja Petugas Pintu Air',aud:'ppa',di:'DI Baru',
+  url:'https://docs.google.com/forms/d/e/1FAIpQLSfQ1eixMkD50pJ5Uz6T0Qf3qkm6lhlfdimWyhnb6QBxLXGsIw/viewform'},
+ {n:'Form Pekarya — DI Baru',d:'Laporan kinerja Pekarya Pengairan',aud:'pekerja',di:'DI Baru',
+  url:'https://docs.google.com/forms/d/e/1FAIpQLSdpD_gTM7s87_KN9uNgHDwPPxp-yB9ShcOQ1n8NTOFpavLspg/viewform'},
+ {n:'Form Staf Pengamat — Semua D.I',d:'Laporan pengamatan lintas Daerah Irigasi',aud:'pengamat',di:'Semua D.I',
+  url:'https://docs.google.com/forms/d/e/1FAIpQLSc9zTZMPQ8XuIlV-xKf-fFQT-KDeZxyQ8XCFMi8c5XWcoBHhw/viewform'},
+ {n:'Form D.I Lainnya — Menyusul',d:'Porolinggo · Setail Teknik · Kali Setail',aud:'all',di:'—',url:''}
+];
+const LKAUD={ppa:'PPA',pekerja:'Pekarya',pengamat:'Staf Pengamat',all:'Info'};
+const LKIC={ppa:'droplets',pekerja:'route',pengamat:'eye',all:'clock'};
+
 const GATES=[
  {kode:'Bendung Setail',di:'DI Setail Teknik',tipe:'Bendung',luas:null,debit:'12,4 m³/dtk',pp:'POB SUGENG',coord:[-8.4382,114.1810],kond:'Baik'},
  {kode:'B.BU.2Ka',di:'DI Baru',tipe:'Pintu Air',luas:'42,0 Ha',debit:'50,4 lt/dtk',pp:'AGUS RIYADI',coord:[-8.4404,114.1087],kond:'Baik'},
@@ -997,7 +1049,7 @@ const ROLES={
  pekerja:{nama:'ARIS SUCAHYO',nip:'NPK.05.91.14.13.016',jabatan:'Pekarya Pengairan',di:'DI Baru'},
  admin:{nama:'Admin Sistem',nip:'—',jabatan:'Administrator',di:'OP3'}};
 const STCLR={'Hadir':'ok','Check-In':'nav','Check-Out':'nav','Sakit':'warn','Izin':'info','Dinas Luar':'vio','Lupa Absen':'bad','Kerja Gabungan':'sky','Cuti':'mut','Disetujui':'ok','Menunggu':'warn','Perlu Revisi':'bad','Terverifikasi':'ok'};
-let S={role:'ppa',user:null,camMode:'in',camStream:null,faceOK:false,shot:null,in:null,out:null,chatFilter:'Semua',
+let S={role:'ppa',user:null,camMode:'in',camStream:null,shot:null,in:null,out:null,chatFilter:'Semua',ft:'all',
  riwayat:[
   {judul:'Operasi & Pembersihan Pintu',lok:'B.BU.10Ka',tgl:'Hari ini',jam:'07:40',st:'Menunggu',jenis:'Pintu Air',di:'DI Baru'},
   {judul:'Pengukuran Debit Harian',lok:'B.BGO.3Ka',tgl:'Kemarin',jam:'08:05',st:'Disetujui',jenis:'Pintu Air',di:'DI Baru'},
@@ -1047,7 +1099,7 @@ function bcl(st){return 'b-'+(STCLR[st]||'mut');}
 function initials(n){return n.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();}
 
 /* ============ NAV ============ */
-const TITLES={dashboard:['Dashboard','Ringkasan wilayah kerja & aktivitas'],laporan:['Laporan Kinerja','Harian · Bulanan · Tahunan'],presensi:['E-Presensi','Check in/out & status kehadiran'],raport:['Raport Kinerja','Penilaian per periode'],kepeg:['Kepegawaian','Biodata, cuti, SK & dokumen'],admin:['Manajemen Data','CRUD pegawai & aset']};
+const TITLES={dashboard:['Dashboard','Ringkasan wilayah kerja & aktivitas'],laporan:['Laporan Kinerja','Harian · Bulanan · Tahunan · Eksternal'],presensi:['E-Presensi','Check in/out & status kehadiran'],raport:['Raport Kinerja','Penilaian per periode'],kepeg:['Kepegawaian','Biodata, cuti, SK & dokumen'],admin:['Manajemen Data','CRUD pegawai & aset']};
 function go(p){$$('.page').forEach(x=>x.classList.toggle('active',x.id==='pg-'+p));
  $$('[data-page]').forEach(b=>b.classList.toggle('on',b.dataset.page===p));
  const[T,sub]=TITLES[p];$('#pgTitle').textContent=T;$('#pgSub').textContent=sub;
@@ -1087,7 +1139,7 @@ function applyRole(){
 let map,pmap,glayers=[],userMk;const office=[-8.4382,114.1810];
 function initMaps(){
  if(typeof L==='undefined'){$('#map').innerHTML='<div class="map-fallback">Peta tidak dapat dimuat (butuh CDN).<br>Ganti dengan tile server internal untuk intranet.</div>';
-  $('#pmap').innerHTML='<div class="map-fallback">Peta lokasi presensi.</div>';return;}
+  $('#pmap').innerHTML='<div class="map-fallback">Peta lokasi presensi.</div>';renderGateSide();return;}
  map=L.map('map',{scrollWheelZoom:false}).setView([-8.462,114.165],12);
  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap'}).addTo(map);
  [{n:'DI BARU',col:'#1B3C87',c:[[-8.424,114.092],[-8.424,114.162],[-8.456,114.162],[-8.456,114.092]]},
@@ -1105,7 +1157,10 @@ function initMaps(){
  L.circle(office,{radius:200,color:'#12A150',fillOpacity:.08,weight:1.5}).addTo(pmap);
  L.circleMarker(office,{radius:8,color:'#fff',weight:2,fillColor:'#12A150',fillOpacity:1}).addTo(pmap).bindTooltip('Kantor OP3',{className:'gate-tip',direction:'top'});
  userMk=L.circleMarker([-8.4373,114.1801],{radius:9,color:'#fff',weight:2.5,fillColor:'#1B3C87',fillOpacity:1}).addTo(pmap);
- updDist([-8.4373,114.1801]);}
+ updDist([-8.4373,114.1801]);
+ renderGateSide();
+ $('#mapCount').textContent=GATES.length+' titik terdata';
+ $('#hsTitik').textContent=GATES.length+' lokasi';}
 function updDist(ll){const d=pmap.distance(ll,office);
  $('#locDist').textContent='Jarak: '+Math.round(d)+' m';
  const ok=d<=200;$('#locStat').textContent=ok?'Dalam Radius':'Di Luar Radius';
@@ -1115,28 +1170,81 @@ function updDist(ll){const d=pmap.distance(ll,office);
  toast('Mengambil lokasi…');
  navigator.geolocation.getCurrentPosition(p=>{const ll=[p.coords.latitude,p.coords.longitude];
   userMk.setLatLng(ll);pmap.setView(ll,16);updDist(ll);},()=>toast('Izin lokasi ditolak — memakai posisi demo'));};
-window.__gd=kode=>{const g=GATES.find(x=>x.kode===kode);if(g)selectGate(g);};
-function selectGate(g){if(map)map.flyTo(g.coord,14,{duration:.8});
- const d=$('#gateDetail');d.classList.add('show');
- d.innerHTML=`<div class="gd-grid">
+
+/* --- Panel samping peta: daftar titik & detail --- */
+function renderGateSide(){
+ const GL=GATES.filter(g=>S.ft==='all'||g.tipe===S.ft);
+ $('#gateDetail').innerHTML=`
+  <div class="gd-box" style="padding:.85rem .95rem">
+   <b style="font-size:.85rem">Legenda</b>
+   <div style="display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.5rem">
+    <span class="badge b-nav" style="display:inline-flex;align-items:center;gap:.35rem"><i style="width:.55rem;height:.55rem;border-radius:50%;background:#1B3C87;display:inline-block"></i>Pintu Air</span>
+    <span class="badge b-warn" style="display:inline-flex;align-items:center;gap:.35rem"><i style="width:.55rem;height:.55rem;border-radius:50%;background:#F0A500;display:inline-block"></i>Bendung</span>
+   </div>
+   <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.55rem">
+    ${[['DI Baru','#1B3C87'],['DI Porolinggo','#F0A500'],['DI Setail Teknik','#0EA5E9'],['DI Kali Setail','#8B5CF6']]
+     .map(z=>`<span style="display:inline-flex;align-items:center;gap:.3rem;font-size:.62rem;font-weight:800;color:var(--mut)"><i style="width:.55rem;height:.55rem;border-radius:.2rem;background:${z[1]};display:inline-block"></i>${z[0]}</span>`).join('')}
+   </div>
+  </div>
+  <small style="font-weight:800;color:var(--mut);letter-spacing:.5px;padding-left:.15rem">DAFTAR TITIK (${GL.length})</small>
+  <div class="glist">
+   ${GL.map(g=>`<button class="grow" onclick="window.__gd('${g.kode}')">
+    <span class="gdot" style="background:${g.tipe==='Bendung'?'#F0A500':'#1B3C87'}"></span>
+    <span class="gmain"><b>${g.kode}</b><small>${g.di} · ${g.luas||'Bendung utama'}</small></span>
+    <span class="badge ${bcl(g.kond)}">${g.kond}</span></button>`).join('')}
+  </div>`;
+ icons();}
+function selectGate(g){
+ if(map)map.flyTo(g.coord,14,{duration:.8});
+ $('#gateDetail').innerHTML=`
+  <button class="btn btn-o" onclick="window.backGates()" style="padding:.55rem .8rem;font-size:.76rem"><i data-lucide="arrow-left"></i>Semua Titik</button>
   <div class="gd-box">
-   <b style="font-size:1rem">${g.kode}</b>
-   <div style="display:flex;gap:.4rem;margin:.5rem 0 .75rem;flex-wrap:wrap"><span class="badge b-nav">${g.tipe}</span><span class="badge b-mut">${g.di}</span><span class="badge ${bcl(g.kond)}">${g.kond}</span></div>
+   <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem">
+    <b style="font-size:.95rem">${g.kode}</b><span class="badge ${bcl(g.kond)}">${g.kond}</span></div>
+   <div style="display:flex;gap:.35rem;margin:.45rem 0 .7rem;flex-wrap:wrap">
+    <span class="badge b-nav">${g.tipe}</span><span class="badge b-mut">${g.di}</span></div>
    <div class="spec">
     <div><small>Luas Baku</small><b>${g.luas||'—'}</b></div>
     <div><small>Debit Rencana</small><b>${g.debit}</b></div>
-    <div><small>Koordinat</small><b style="font-size:.72rem">${g.coord[0].toFixed(5)}, ${g.coord[1].toFixed(5)}</b></div>
-    <div><small>KorSDA</small><b style="font-size:.8rem">Bangorejo</b></div>
-   </div></div>
+    <div><small>Koordinat</small><b style="font-size:.7rem">${g.coord[0].toFixed(5)}, ${g.coord[1].toFixed(5)}</b></div>
+    <div><small>KorSDA</small><b style="font-size:.78rem">Bangorejo</b></div>
+   </div>
+  </div>
   <div class="gd-box" style="display:flex;flex-direction:column;gap:.6rem">
-   <small style="font-weight:800;color:var(--mut);letter-spacing:.5px">PETUGAS (PPA)</small>
-   <div style="display:flex;gap:.7rem;align-items:center"><span class="av" style="width:2.5rem;height:2.5rem;font-size:.72rem">${initials(g.pp.replace('POB ',''))}</span>
-    <div><b style="font-size:.82rem">${g.pp}</b><br><small style="color:var(--mut);font-weight:700">${g.tipe==='Bendung'?'Petugas Operasional Bendung':'Petugas Pintu Air'}</small></div></div>
+   <small style="font-weight:800;color:var(--mut);letter-spacing:.5px">PETUGAS</small>
+   <div style="display:flex;gap:.7rem;align-items:center">
+    <span class="av" style="width:2.5rem;height:2.5rem;font-size:.72rem">${initials(g.pp.replace('POB ',''))}</span>
+    <div><b style="font-size:.82rem">${g.pp}</b><br><small style="color:var(--mut);font-weight:700">${g.tipe==='Bendung'?'Petugas Operasional Bendung':'Petugas Pintu Air'}</small></div>
+   </div>
    <button class="btn btn-o" onclick="go('laporan')" style="width:100%;padding:.55rem"><i data-lucide="clipboard-list"></i>Lihat Laporan</button>
    <button class="btn btn-n" onclick="openChat()" style="width:100%;padding:.55rem"><i data-lucide="message-circle"></i>Chat Petugas</button>
-  </div></div>`;icons();}
+  </div>`;
+ icons();}
+window.backGates=()=>{if(map)map.flyTo([-8.462,114.165],12,{duration:.8});renderGateSide();};
+window.__gd=kode=>{go('dashboard');setTimeout(()=>{const g=GATES.find(x=>x.kode===kode);if(g)selectGate(g);},180);};
  $$('.fchip').forEach(c=>c.onclick=()=>{$$('.fchip').forEach(x=>x.classList.remove('on'));c.classList.add('on');
- const f=c.dataset.ft;glayers.forEach(({g,m})=>{if(f==='all'||g.tipe===f){if(!map.hasLayer(m))m.addTo(map);}else{if(map.hasLayer(m))map.removeLayer(m);}});});
+ S.ft=c.dataset.ft;
+ glayers.forEach(({g,m})=>{const vis=S.ft==='all'||g.tipe===S.ft;
+  if(vis&&!map.hasLayer(m))m.addTo(map);if(!vis&&map.hasLayer(m))map.removeLayer(m);});
+ renderGateSide();});
+
+/* ============ LAPKIN ============ */
+function renderLapkin(){
+ $('#lapkinList').innerHTML=LAPKIN.map(f=>{
+  const mine=f.aud===S.role;
+  const badge=f.url
+   ?(mine?'<span class="badge b-ok">Form Anda</span>':`<span class="badge b-mut">Untuk ${LKAUD[f.aud]}${f.di&&f.di!=='—'&&!mine?' · '+f.di:''}</span>`)
+   :'<span class="badge b-warn">Menyusul</span>';
+  return `<div class="lk ${f.url?'':'off'}">
+   <span class="lic" style="background:#E7ECFA;color:var(--navy)"><i data-lucide="${LKIC[f.aud]}"></i></span>
+   <div style="flex:1;min-width:0"><b>${f.n}</b><small>${f.d}</small></div>
+   ${badge}
+   ${f.url?`<a class="btn btn-n" style="padding:.55rem .85rem;font-size:.74rem" href="${f.url}" target="_blank" rel="noopener"><i data-lucide="external-link"></i>Buka</a>`
+   :`<button class="btn btn-o" disabled style="padding:.55rem .85rem;font-size:.74rem">—</button>`}
+  </div>`;}).join('');icons();}
+function openLapkin(){renderLapkin();$('#lapkinModal').classList.add('open');icons();}
+ $('#scLapkin').onclick=openLapkin;
+ $('#btnLapkin2').onclick=openLapkin;
 
 /* ============ RENDER LIST ============ */
 function renderRwy(){$('#rwyList').innerHTML=S.riwayat.map(r=>`
@@ -1220,7 +1328,7 @@ function updPresBtns(){$('#btnIn').disabled=!!S.in;$('#btnOut').disabled=!S.in;
  $('#outTime').className='badge '+(S.out?'b-ok':'b-mut');}
 
 /* ============ KAMERA ============ */
-function openCam(mode){S.camMode=mode;S.faceOK=false;$('#camFrame').classList.remove('ok');
+function openCam(mode){S.camMode=mode;$('#camFrame').classList.remove('ok');
  $('#camTitle').textContent=mode==='in'?'SELFIE — CHECK IN':'SELFIE — CHECK OUT';
  $('#camHint').innerHTML='Cari posisi wajah di dalam bingkai<small>Deteksi wajah aktif — pastikan pencahayaan cukup</small>';
  $('#camModal').classList.add('open');icons();$('#camPh').style.display='none';
@@ -1231,7 +1339,7 @@ function openCam(mode){S.camMode=mode;S.faceOK=false;$('#camFrame').classList.re
  }else{$('#camPh').style.display='grid';}
  detectFace();}
 function detectFace(){setTimeout(()=>{if(!$('#camModal').classList.contains('open'))return;
- S.faceOK=true;$('#camFrame').classList.add('ok');
+ $('#camFrame').classList.add('ok');
  $('#camHint').innerHTML='Wajah terdeteksi ✓<small>Tekan tombol shutter untuk mengambil foto</small>';},1400);}
  $('#camClose').onclick=closeCam;
 function closeCam(){if(S.camStream){S.camStream.getTracks().forEach(t=>t.stop());S.camStream=null;}
@@ -1251,8 +1359,8 @@ function closeCam(){if(S.camStream){S.camStream.getTracks().forEach(t=>t.stop())
  ctx.font='500 19px ui-monospace,Menlo,monospace';ctx.fillStyle='#FFD75E';
  ctx.fillText((S.user?S.user.nip:'')+' · '+n.toLocaleDateString('id-ID')+' '+n.toLocaleTimeString('id-ID',{hour12:false}),28,892);
  ctx.fillStyle='#fff';ctx.fillText('Lat,Lng: '+($('#locCoord').textContent||'-')+'  ·  E-PRESENSI OP3 BBWS BRANTAS',28,924);
- S.shot=cv.toDataURL('image/jpeg',.9);
- $('#shotImg').src=S.shot;$('#camModal').classList.remove('open');$('#shotModal').classList.add('open');icons();};
+ $('#shotImg').src=cv.toDataURL('image/jpeg',.9);
+ $('#camModal').classList.remove('open');$('#shotModal').classList.add('open');icons();};
  $('#btnRetake').onclick=()=>{$('#shotModal').classList.remove('open');openCam(S.camMode);};
  $('#btnSend').onclick=()=>{const t=new Date();
  if(S.camMode==='in'){S.in=t;S.pres.unshift({jenis:'Check-In',t:'Hari ini '+fmtT(t),st:'Check-In',note:''});toast('Check-In berhasil — selfie terverifikasi ✓');}
