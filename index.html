@@ -25,9 +25,10 @@
   --sh-sm:0 1px 2px rgba(16,24,40,.05),0 8px 22px -10px rgba(16,24,40,.12);
   --sh:0 2px 4px rgba(16,24,40,.04),0 16px 40px -14px rgba(16,24,40,.16);
   --sh-lg:0 24px 60px -18px rgba(13,26,58,.30);
+  --maph:29rem;
 }
-@media(min-width:1200px){:root{--gap:1.5rem;--mainpad:3.25rem}}
-@media(min-width:1600px){:root{--gap:1.75rem;--sbw:19rem;--mainpad:3.5rem}}
+@media(min-width:1200px){:root{--gap:1.5rem;--mainpad:3.75rem}}
+@media(min-width:1600px){:root{--gap:1.75rem;--sbw:19rem;--mainpad:4rem}}
 html{scroll-behavior:smooth}
 @media(min-width:1920px){html{font-size:17.5px}}
 @media(min-width:2300px){html{font-size:19px}}
@@ -66,7 +67,6 @@ i[data-lucide],svg.lucide{width:1.25rem;height:1.25rem;flex:none}
 /* ================= SHELL / TOPBAR ================= */
 #shell{margin-left:var(--sbw);min-height:100vh;display:flex;flex-direction:column}
 main{width:100%;max-width:118rem;margin-inline:auto;padding:0 var(--mainpad) 4rem}
-/* Topbar SOLID — konten scroll tidak menimpa judul */
 #topbar{position:sticky;top:0;z-index:70;display:flex;align-items:center;gap:1rem;margin:0 calc(var(--mainpad)*-1) 1.75rem;padding:1.05rem var(--mainpad);background:var(--bg);border-bottom:1px solid rgba(230,233,242,.9);box-shadow:0 6px 18px -14px rgba(13,26,58,.18)}
 #btnMenu{display:none;width:2.6rem;height:2.6rem;border-radius:.8rem;background:#fff;box-shadow:var(--sh-sm);place-items:center;flex:none}
 .pg-title h1{font-size:1.35rem;font-weight:800;line-height:1.2}
@@ -167,7 +167,7 @@ a.tile{text-decoration:none;color:inherit}
 @media(max-width:1199.98px){.kpis{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.kpis{grid-template-columns:1fr 1fr}}
 
-/* ================= TODAY CARD (modern) ================= */
+/* ================= TODAY CARD ================= */
 .today{background:linear-gradient(180deg,#FFFFFF,#F6F8FE);display:flex;flex-direction:column;height:100%}
 .today-top{display:flex;align-items:center;gap:.8rem}
 .tt-ic{width:2.7rem;height:2.7rem;border-radius:.9rem;background:linear-gradient(135deg,var(--gold),#FFD75E);color:#3A2C00;display:grid;place-items:center;box-shadow:0 .5rem 1rem rgba(255,194,14,.35);flex:none}
@@ -246,35 +246,38 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 .tacts button:hover{background:var(--bg);color:var(--navy)}
 .tacts svg{width:.95rem;height:.95rem}
 
-/* ================= MAP — sejajar hero (sp8) & panel sp4 ================= */
+/* ================= MAP — tinggi 29rem + panel berbingkai ================= */
 .mapcol{min-width:0}
-.mapframe{position:relative;min-width:0}
-@media(max-width:1099.98px){.mapframe{margin-inline:calc(var(--mainpad)*-1)}}
+.mapframe{position:relative;min-width:0;height:var(--maph)}
+@media(max-width:1099.98px){.mapframe{margin-inline:calc(var(--mainpad)*-1);height:min(78vw,24rem)}}
 @media(min-width:1100px){.mapframe{border-radius:1.25rem;overflow:hidden;box-shadow:var(--sh-sm);border:1px solid #E9ECF4}}
-#map{height:min(78vw,24rem);z-index:1;background:#E7ECFA}
-@media(min-width:1100px){#map{height:23.5rem}}
+#map{height:100%;z-index:1;background:#E7ECFA}
 .map-fallback{height:100%;min-height:18rem;background:linear-gradient(135deg,#E7ECFA,#F6EDD8);display:grid;place-items:center;color:var(--navy);font-weight:700;text-align:center;padding:1.25rem}
 .leaflet-tooltip.zone-lab{background:rgba(255,255,255,.9);border:none;font-weight:800;font-size:.65rem;color:var(--deep);box-shadow:0 .25rem .75rem rgba(0,0,0,.15);border-radius:.5rem;padding:.2rem .55rem}
 .leaflet-tooltip.gate-tip{background:var(--deep);color:#fff;border:none;font-weight:700;font-size:.68rem;border-radius:.55rem;padding:.3rem .6rem}
 .leaflet-tooltip.gate-tip::before{display:none}
 #pmap{height:13rem;border-radius:1rem;z-index:1}
-.mapside{display:flex;flex-direction:column;gap:.7rem;min-width:0}
-@media(max-width:1099.98px){.mapside{padding-inline:.15rem}}
-.gd-box{background:var(--bg);border-radius:1rem;padding:1rem 1.1rem}
+
+/* Panel samping: CARD berbingkai, tinggi = peta, konten scroll di dalam */
+.mapside{display:flex;flex-direction:column;gap:.7rem;min-width:0;height:var(--maph);overflow:hidden;background:#fff;border-radius:1.25rem;box-shadow:var(--sh-sm);border:1px solid #E9ECF4;padding:1.1rem}
+@media(max-width:1099.98px){
+  .mapside{height:auto;max-height:none;padding:1rem;margin-inline:.1rem}
+  .mapside .glist{max-height:20rem}
+}
+.gd-box{background:var(--bg);border-radius:1rem;padding:.9rem 1rem}
 .spec{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
 .spec div{background:#fff;border-radius:.85rem;padding:.65rem .8rem}
 .spec small{font-size:.6rem;color:var(--mut);font-weight:800;text-transform:uppercase;letter-spacing:.4px}
 .spec b{font-size:.9rem;display:block;margin-top:.15rem}
-.glist{display:flex;flex-direction:column;gap:.2rem;overflow:auto;max-height:16.5rem;padding-right:.2rem}
-@media(min-width:1100px){.glist{flex:1;min-height:0;max-height:none}}
-.grow{display:flex;align-items:center;gap:.6rem;padding:.5rem .55rem;border-radius:.7rem;text-align:left;transition:.12s}
+.glist{display:flex;flex-direction:column;gap:.15rem;overflow:auto;flex:1;min-height:0;padding-right:.2rem}
+.grow{display:flex;align-items:center;gap:.6rem;padding:.48rem .55rem;border-radius:.7rem;text-align:left;transition:.12s;flex:none}
 .grow:hover{background:#E9EDF7}
 .gdot{width:.6rem;height:.6rem;border-radius:50%;flex:none}
 .gmain{flex:1;min-width:0}
 .gmain b{font-size:.76rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .gmain small{font-size:.62rem;color:var(--mut);font-weight:600;display:block}
 
-/* ================= STATISTIK (modern) ================= */
+/* ================= STATISTIK ================= */
 .donutv2{display:flex;flex-direction:column;align-items:center;gap:1.15rem}
 @media(min-width:1500px){.donutv2{flex-direction:row;justify-content:space-around;align-items:center;gap:1.5rem}}
 .donutv2>svg{width:12.5rem;max-width:100%}
@@ -360,7 +363,7 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 
 /* ================= RESPONSIVE ================= */
 @media(max-width:1099.98px){
-  :root{--mainpad:.55rem}
+  :root{--mainpad:.55rem;--maph:min(78vw,24rem)}
   #sidebar{transform:translateX(-105%)}#sidebar.open{transform:none}
   #shell{margin-left:0}#btnMenu{display:grid}
   .top-search{display:none}
@@ -488,7 +491,6 @@ textarea.inp{resize:vertical;min-height:5.25rem}
         <div class="sr"><span class="badge b-nav" id="dToday">—</span></div>
       </div>
 
-      <!-- HERO (sp8) + TODAY (sp4) — sejajar -->
       <div class="sp8">
         <div class="hero">
           <svg class="swirl" viewBox="0 0 200 160" fill="none"><rect x="20" y="10" width="120" height="60" rx="30" stroke="#1B3C87" stroke-width="14"/><rect x="60" y="70" width="120" height="60" rx="30" stroke="#1B3C87" stroke-width="14"/></svg>
@@ -555,7 +557,7 @@ textarea.inp{resize:vertical;min-height:5.25rem}
         <div class="tile" id="scLapkin"><div class="tic" style="background:#FDE7E9;color:#B4232A"><i data-lucide="layers"></i></div><div><b>Lapkin</b><small>Form laporan eksternal</small></div><i data-lucide="chevron-right" class="arr"></i></div>
       </div>
 
-      <!-- PETA — kolom sp8 (sama dengan hero), panel sp4 (sejajar Today) -->
+      <!-- PETA (sp8, tinggi 29rem) + PANEL LEGENDA DALAM CARD (sp4, scroll internal) -->
       <div class="sec">
         <span class="sic" style="background:linear-gradient(135deg,#0EA5E9,#38BDF8)"><i data-lucide="map"></i></span>
         <div><h2>Peta Wilayah & Pantauan</h2><p>Spesifikasi titik, debit rencana, dan petugas pengelola</p></div>
@@ -1255,11 +1257,11 @@ function updDist(ll){const d=pmap.distance(ll,office);
  navigator.geolocation.getCurrentPosition(p=>{const ll=[p.coords.latitude,p.coords.longitude];
   userMk.setLatLng(ll);pmap.setView(ll,16);updDist(ll);},()=>toast('Izin lokasi ditolak — memakai posisi demo'));};
 
-/* --- Panel samping peta (sp4, sejajar kolom Today) --- */
+/* --- Panel samping peta: dalam CARD, daftar scroll internal --- */
 function renderGateSide(){
  const GL=GATES.filter(g=>S.ft==='all'||g.tipe===S.ft);
  $('#gateDetail').innerHTML=`
-  <div class="gd-box" style="padding:.85rem .95rem">
+  <div class="gd-box" style="padding:.85rem .95rem;flex:none">
    <b style="font-size:.85rem">Legenda</b>
    <div style="display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.5rem">
     <span class="badge b-nav" style="display:inline-flex;align-items:center;gap:.35rem"><i style="width:.55rem;height:.55rem;border-radius:50%;background:#1B3C87;display:inline-block"></i>Pintu Air</span>
@@ -1270,7 +1272,7 @@ function renderGateSide(){
      .map(z=>`<span style="display:inline-flex;align-items:center;gap:.3rem;font-size:.62rem;font-weight:800;color:var(--mut)"><i style="width:.55rem;height:.55rem;border-radius:.2rem;background:${z[1]};display:inline-block"></i>${z[0]}</span>`).join('')}
    </div>
   </div>
-  <small style="font-weight:800;color:var(--mut);letter-spacing:.5px;padding-left:.15rem">DAFTAR TITIK (${GL.length})</small>
+  <small style="font-weight:800;color:var(--mut);letter-spacing:.5px;padding-left:.15rem;flex:none">DAFTAR TITIK (${GL.length})</small>
   <div class="glist">
    ${GL.map(g=>`<button class="grow" onclick="window.__gd('${g.kode}')">
     <span class="gdot" style="background:${g.tipe==='Bendung'?'#F0A500':'#1B3C87'}"></span>
@@ -1281,27 +1283,29 @@ function renderGateSide(){
 function selectGate(g){
  if(map)map.flyTo(g.coord,14,{duration:.8});
  $('#gateDetail').innerHTML=`
-  <button class="btn btn-o" onclick="window.backGates()" style="padding:.55rem .8rem;font-size:.76rem;align-self:flex-start"><i data-lucide="arrow-left"></i>Semua Titik</button>
-  <div class="gd-box">
-   <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem">
-    <b style="font-size:.95rem">${g.kode}</b><span class="badge ${bcl(g.kond)}">${g.kond}</span></div>
-   <div style="display:flex;gap:.35rem;margin:.45rem 0 .7rem;flex-wrap:wrap">
-    <span class="badge b-nav">${g.tipe}</span><span class="badge b-mut">${g.di}</span></div>
-   <div class="spec">
-    <div><small>Luas Baku</small><b>${g.luas||'—'}</b></div>
-    <div><small>Debit Rencana</small><b>${g.debit}</b></div>
-    <div><small>Koordinat</small><b style="font-size:.7rem">${g.coord[0].toFixed(5)}, ${g.coord[1].toFixed(5)}</b></div>
-    <div><small>KorSDA</small><b style="font-size:.78rem">Bangorejo</b></div>
+  <button class="btn btn-o" onclick="window.backGates()" style="padding:.55rem .8rem;font-size:.76rem;align-self:flex-start;flex:none"><i data-lucide="arrow-left"></i>Semua Titik</button>
+  <div class="glist">
+   <div class="gd-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem">
+     <b style="font-size:.95rem">${g.kode}</b><span class="badge ${bcl(g.kond)}">${g.kond}</span></div>
+    <div style="display:flex;gap:.35rem;margin:.45rem 0 .7rem;flex-wrap:wrap">
+     <span class="badge b-nav">${g.tipe}</span><span class="badge b-mut">${g.di}</span></div>
+    <div class="spec">
+     <div><small>Luas Baku</small><b>${g.luas||'—'}</b></div>
+     <div><small>Debit Rencana</small><b>${g.debit}</b></div>
+     <div><small>Koordinat</small><b style="font-size:.7rem">${g.coord[0].toFixed(5)}, ${g.coord[1].toFixed(5)}</b></div>
+     <div><small>KorSDA</small><b style="font-size:.78rem">Bangorejo</b></div>
+    </div>
    </div>
-  </div>
-  <div class="gd-box" style="display:flex;flex-direction:column;gap:.6rem">
-   <small style="font-weight:800;color:var(--mut);letter-spacing:.5px">PETUGAS</small>
-   <div style="display:flex;gap:.7rem;align-items:center">
-    <span class="av" style="width:2.5rem;height:2.5rem;font-size:.72rem">${initials(g.pp.replace('POB ',''))}</span>
-    <div><b style="font-size:.82rem">${g.pp}</b><br><small style="color:var(--mut);font-weight:700">${g.tipe==='Bendung'?'Petugas Operasional Bendung':'Petugas Pintu Air'}</small></div>
+   <div class="gd-box" style="display:flex;flex-direction:column;gap:.6rem">
+    <small style="font-weight:800;color:var(--mut);letter-spacing:.5px">PETUGAS</small>
+    <div style="display:flex;gap:.7rem;align-items:center">
+     <span class="av" style="width:2.5rem;height:2.5rem;font-size:.72rem">${initials(g.pp.replace('POB ',''))}</span>
+     <div><b style="font-size:.82rem">${g.pp}</b><br><small style="color:var(--mut);font-weight:700">${g.tipe==='Bendung'?'Petugas Operasional Bendung':'Petugas Pintu Air'}</small></div>
+    </div>
+    <button class="btn btn-o" onclick="go('laporan')" style="width:100%;padding:.55rem"><i data-lucide="clipboard-list"></i>Lihat Laporan</button>
+    <button class="btn btn-n" onclick="openChat()" style="width:100%;padding:.55rem"><i data-lucide="message-circle"></i>Chat Petugas</button>
    </div>
-   <button class="btn btn-o" onclick="go('laporan')" style="width:100%;padding:.55rem"><i data-lucide="clipboard-list"></i>Lihat Laporan</button>
-   <button class="btn btn-n" onclick="openChat()" style="width:100%;padding:.55rem"><i data-lucide="message-circle"></i>Chat Petugas</button>
   </div>`;
  icons();}
 window.backGates=()=>{if(map)map.flyTo([-8.462,114.165],12,{duration:.8});renderGateSide();};
@@ -1375,12 +1379,11 @@ function renderMini(){
  $('#mPresB').className='badge '+(S.out?'b-ok':(S.in?'b-warn':'b-mut'));
  $('#mLap').textContent=(42+S.riwayat.length-4)+' laporan';
  $('#mTugas').textContent=tugasA+' aktif';
- // skor harian ring
  const done=S.tugas.filter(t=>t.done).length;
  let score=55+(S.in?15:0)+(S.out?15:0)+Math.min(15,done*5);
  score=Math.min(100,score);
  $('#todayScore').textContent=score;
- const C=2*Math.PI*17; // r=17
+ const C=2*Math.PI*17;
  $('#todayRing').setAttribute('stroke-dasharray',(C*score/100)+' '+C);}
  $('#debitForm').onsubmit=e=>{e.preventDefault();
  S.debits.push({t:fmtT(new Date()),h:+$('#dHigh').value,d:+$('#dDebit').value});
