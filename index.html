@@ -1294,19 +1294,22 @@ function initMaps(){
  renderGateSide();
  $('#mapCount').textContent=GATES.length+' titik terdata';
  $('#hsTitik').textContent=GATES.length+' lokasi';}
-function updDist(ll){const d=pmap.distance(ll,office);
- $('#locDist').textContent='Jarak: '+Math.round(d)+' m';
- $('#locCoord').textContent=ll[0].toFixed(5)+', '+ll[1].toFixed(5);
- if(S.kg){ // Kerja Gabungan: luar radius diizinkan
-  $('#locStat').textContent='Luar Radius · OK (KG)';
-  $('#locStat').className='badge b-sky';
-  return;}
- const ok=d<=200;$('#locStat').textContent=ok?'Dalam Radius':'Di Luar Radius';
- $('#locStat').className='badge '+(ok?'b-ok':'b-bad');}
- $('#btnLoc').onclick=()=>{if(!navigator.geolocation){toast('Geolokasi tidak didukung');return;}
- toast('Mengambil lokasi…');
- navigator.geolocation.getCurrentPosition(p=>{const ll=[p.coords.latitude,p.coords.longitude];
-  userMk.setLatLng(ll);pmap.setView(ll,16);updDist(ll);},()=>toast('Izin lokasi ditolak — memakai posisi demo'));};
+function updDist(ll){
+  // Normalisasi: terima LatLng objek Leaflet ATAU array [lat,lng]
+  const lat=(ll&&typeof ll.lat==='number')?ll.lat:(ll?ll[0]:null);
+  const lng=(ll&&typeof ll.lng==='number')?ll.lng:(ll?ll[1]:null);
+  if(lat==null||lng==null){$('#locCoord').textContent='—';return;}
+  $('#locCoord').textContent=lat.toFixed(5)+', '+lng.toFixed(5);
+  if(!pmap||!pmap.distance){$('#locDist').textContent='Jarak: —';return;}
+  const d=pmap.distance([lat,lng],office);
+  $('#locDist').textContent='Jarak: '+Math.round(d)+' m';
+  if(S.kg){ // Kerja Gabungan: luar radius diizinkan
+    $('#locStat').textContent='Luar Radius · OK (KG)';
+    $('#locStat').className='badge b-sky';
+    return;}
+  const ok=d<=200;$('#locStat').textContent=ok?'Dalam Radius':'Di Luar Radius';
+  $('#locStat').className='badge '+(ok?'b-ok':'b-bad');
+}
 
 /* --- Panel samping peta --- */
 function renderGateSide(){
@@ -1330,7 +1333,7 @@ function renderGateSide(){
     <span class="gmain"><b>${g.kode}</b><small>${g.di} · ${g.luas||'Bendung utama'}</small></span>
     <span class="badge ${bcl(g.kond)}">${g.kond}</span></button>`).join('')}
   </div>`;
- icons();}
+icons();}
 function selectGate(g){
  if(map)map.flyTo(g.coord,14,{duration:.8});
  $('#gateDetail').innerHTML=`
@@ -1359,14 +1362,36 @@ function selectGate(g){
    </div>
   </div>`;
  icons();}
-window.backGates=()=>{if(map)map.flyTo([-8.462,114.165],12,{duration:.8});renderGateSide();};
-window.__gd=kode=>{go('dashboard');setTimeout(()=>{const g=GATES.find(x=>x.kode===kode);if(g)selectGate(g);},180);};
- $('#mapChips').querySelectorAll('.fchip').forEach(c=>c.onclick=()=>{
- $('#mapChips').querySelectorAll('.fchip').forEach(x=>x.classList.remove('on'));c.classList.add('on');
- S.ft=c.dataset.ft;
- glayers.forEach(({g,m})=>{const vis=S.ft==='all'||g.tipe===S.ft;
-  if(vis&&!map.hasLayer(m))m.addTo(map);if(!vis&&map.hasLayer(m))map.removeLayer(m);});
- renderGateSide();});
+window.backGates = () => {
+  if (map) map.flyTo([-8.462, 114.165], 12, { duration: .8 });
+  renderGateSide();
+};
+
+window.__gd = kode => {
+  go('dashboard');
+  setTimeout(() => {
+    const g = GATES.find(x => x.kode === kode);
+    if (g) selectGate(g);
+  }, 180);
+};
+
+// Filter chip peta: Semua / Pintu Air / Bendung
+ $('#mapChips').querySelectorAll('.fchip').forEach(c => c.onclick = () => {
+  $('#mapChips').querySelectorAll('.fchip').forEach(x => x.classList.remove('on'));
+  c.classList.add('on');
+
+  S.ft = c.dataset.ft;
+
+  if (map) {
+    glayers.forEach(({ g, m }) => {
+      const vis = S.ft === 'all' || g.tipe === S.ft;
+      if (vis && !map.hasLayer(m)) m.addTo(map);       // ✅ FIX: m.addTo(map) — bukan map.addTo(m)
+      if (!vis && map.hasLayer(m)) map.removeLayer(m); // ✅ benar
+    });
+  }
+
+  renderGateSide();
+});
 
 /* ============ LAPKIN ============ */
 function renderLapkin(){
