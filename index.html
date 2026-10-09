@@ -33,7 +33,7 @@ html{scroll-behavior:smooth}
 @media(min-width:1920px){html{font-size:17.5px}}
 @media(min-width:2300px){html{font-size:19px}}
 @media(min-width:2800px){html{font-size:21px}}
-body{font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);font-size:.9rem;line-height:1.5;-webkit-font-smoothing:antialiased}
+body{font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);font-size:.9rem;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 input,select,textarea{font-family:inherit;font-size:inherit;color:inherit}
 i[data-lucide],svg.lucide{width:1.25rem;height:1.25rem;flex:none}
@@ -67,11 +67,12 @@ i[data-lucide],svg.lucide{width:1.25rem;height:1.25rem;flex:none}
 /* ================= SHELL / TOPBAR ================= */
 #shell{margin-left:var(--sbw);min-height:100vh;display:flex;flex-direction:column}
 main{width:100%;max-width:118rem;margin-inline:auto;padding:0 var(--mainpad) 4rem}
-#topbar{position:sticky;top:0;z-index:70;display:flex;align-items:center;gap:1rem;margin:0 calc(var(--mainpad)*-1) 1.75rem;padding:1.05rem var(--mainpad);background:var(--bg);border-bottom:1px solid rgba(230,233,242,.9);box-shadow:0 6px 18px -14px rgba(13,26,58,.18)}
+#topbar{position:sticky;top:0;z-index:70;display:flex;align-items:center;gap:.9rem;margin:0 calc(var(--mainpad)*-1) 1.75rem;padding:1.05rem var(--mainpad);background:var(--bg);border-bottom:1px solid rgba(230,233,242,.9);box-shadow:0 6px 18px -14px rgba(13,26,58,.18)}
 #btnMenu{display:none;width:2.6rem;height:2.6rem;border-radius:.8rem;background:#fff;box-shadow:var(--sh-sm);place-items:center;flex:none}
-.pg-title h1{font-size:1.35rem;font-weight:800;line-height:1.2}
-.pg-title p{font-size:.74rem;color:var(--mut);font-weight:600}
-.top-search{margin-left:auto;display:flex;align-items:center;gap:.55rem;background:#fff;border-radius:999px;padding:.6rem 1rem;width:22rem;box-shadow:var(--sh-sm);position:relative}
+.pg-title{flex:1;min-width:0}
+.pg-title h1{font-size:1.35rem;font-weight:800;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pg-title p{font-size:.74rem;color:var(--mut);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top-search{margin-left:auto;display:flex;align-items:center;gap:.55rem;background:#fff;border-radius:999px;padding:.6rem 1rem;width:22rem;box-shadow:var(--sh-sm);position:relative;flex:none}
 .top-search input{border:none;outline:none;flex:1;font-size:.82rem;background:transparent;min-width:0}
 .top-search>svg{color:#98A2B3}
 #srchRes{position:absolute;top:calc(100% + .5rem);left:0;right:0;background:#fff;border-radius:1rem;box-shadow:var(--sh-lg);padding:.5rem;display:none;max-height:16rem;overflow:auto;z-index:80}
@@ -81,8 +82,13 @@ main{width:100%;max-width:118rem;margin-inline:auto;padding:0 var(--mainpad) 4re
 .bell{position:relative;width:2.75rem;height:2.75rem;border-radius:.9rem;background:#fff;box-shadow:var(--sh-sm);display:grid;place-items:center;color:#475467;flex:none}
 .bell .dot{position:absolute;top:.55rem;right:.6rem;width:.55rem;height:.55rem;border-radius:50%;background:var(--bad);border:2px solid #fff;display:none}
 .bell .dot.show{display:block}
-#notifPanel{position:absolute;top:calc(100% + .6rem);right:0;width:min(24rem,92vw);background:#fff;border-radius:1.25rem;box-shadow:var(--sh-lg);padding:.9rem;z-index:95;display:none;text-align:left}
-#notifPanel.open{display:block}
+/* Desktop: panel mengikuti lonceng */
+#notifPanel{position:absolute;top:calc(100% + .6rem);right:0;width:24rem;background:#fff;border-radius:1.25rem;box-shadow:var(--sh-lg);padding:.9rem;z-index:95;display:none;text-align:left}
+/* HP: panel fixed full-width agar tidak terpotong */
+@media(max-width:1099.98px){
+  #notifPanel{position:fixed;top:calc(4.4rem + env(safe-area-inset-top));left:var(--mainpad);right:var(--mainpad);width:auto}
+}
+#notifPanel.open{display:block;animation:fade .2s}
 .nrow{display:flex;gap:.75rem;padding:.7rem;border-radius:.9rem;cursor:pointer;align-items:flex-start}
 .nrow:hover{background:var(--bg)}
 .nrow .nic{width:2.4rem;height:2.4rem;border-radius:.75rem;display:grid;place-items:center;flex:none}
@@ -224,6 +230,13 @@ a.tile{text-decoration:none;color:inherit}
 textarea.inp{resize:vertical;min-height:5.25rem}
 .f2{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
 @media(max-width:520px){.f2{grid-template-columns:1fr}}
+/* Dropzone foto surat */
+.dropz{display:flex;flex-direction:column;align-items:center;gap:.3rem;border:2px dashed #C9D2E5;border-radius:1rem;padding:1.1rem 1rem;text-align:center;cursor:pointer;background:#F7F8FB;transition:.15s}
+.dropz:hover{border-color:var(--navy);background:#F2F5FD}
+.dropz svg{width:1.7rem;height:1.7rem;color:var(--navy)}
+.dropz b{font-size:.8rem}
+.dropz small{font-size:.66rem;color:var(--mut);font-weight:600}
+#stPrev{max-height:9rem;border-radius:.8rem;margin-top:.55rem;display:block}
 
 /* ================= LIST / TABLE ================= */
 .rrow{display:flex;align-items:center;gap:.8rem;padding:.75rem .3rem;border-bottom:1px solid var(--line)}
@@ -246,23 +259,19 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 .tacts button:hover{background:var(--bg);color:var(--navy)}
 .tacts svg{width:.95rem;height:.95rem}
 
-/* ================= MAP — tinggi 29rem + panel berbingkai ================= */
+/* ================= MAP — kartu dengan padding, tidak full-bleed ================= */
 .mapcol{min-width:0}
-.mapframe{position:relative;min-width:0;height:var(--maph)}
-@media(max-width:1099.98px){.mapframe{margin-inline:calc(var(--mainpad)*-1);height:min(78vw,24rem)}}
-@media(min-width:1100px){.mapframe{border-radius:1.25rem;overflow:hidden;box-shadow:var(--sh-sm);border:1px solid #E9ECF4}}
+.mapframe{position:relative;min-width:0;height:var(--maph);border-radius:1.25rem;overflow:hidden;box-shadow:var(--sh-sm);border:1px solid #E9ECF4}
 #map{height:100%;z-index:1;background:#E7ECFA}
 .map-fallback{height:100%;min-height:18rem;background:linear-gradient(135deg,#E7ECFA,#F6EDD8);display:grid;place-items:center;color:var(--navy);font-weight:700;text-align:center;padding:1.25rem}
 .leaflet-tooltip.zone-lab{background:rgba(255,255,255,.9);border:none;font-weight:800;font-size:.65rem;color:var(--deep);box-shadow:0 .25rem .75rem rgba(0,0,0,.15);border-radius:.5rem;padding:.2rem .55rem}
 .leaflet-tooltip.gate-tip{background:var(--deep);color:#fff;border:none;font-weight:700;font-size:.68rem;border-radius:.55rem;padding:.3rem .6rem}
 .leaflet-tooltip.gate-tip::before{display:none}
 #pmap{height:13rem;border-radius:1rem;z-index:1}
-
-/* Panel samping: CARD berbingkai, tinggi = peta, konten scroll di dalam */
 .mapside{display:flex;flex-direction:column;gap:.7rem;min-width:0;height:var(--maph);overflow:hidden;background:#fff;border-radius:1.25rem;box-shadow:var(--sh-sm);border:1px solid #E9ECF4;padding:1.1rem}
 @media(max-width:1099.98px){
-  .mapside{height:auto;max-height:none;padding:1rem;margin-inline:.1rem}
-  .mapside .glist{max-height:20rem}
+  .mapside{height:auto;max-height:none}
+  .mapside .glist{max-height:19rem}
 }
 .gd-box{background:var(--bg);border-radius:1rem;padding:.9rem 1rem}
 .spec{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
@@ -361,20 +370,26 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 #tabbar .fab{width:3.7rem;height:3.7rem;border-radius:50%;background:linear-gradient(135deg,var(--navy),#3B62C9);color:#fff;display:grid;place-items:center;margin:-1.9rem .25rem 0;box-shadow:0 .9rem 1.6rem rgba(27,60,135,.5);border:.25rem solid #fff}
 #tabbar .fab svg{width:1.5rem;height:1.5rem}
 
-/* ================= RESPONSIVE ================= */
+/* ================= RESPONSIVE (HP) — padding rapi .9rem ================= */
 @media(max-width:1099.98px){
-  :root{--mainpad:.55rem;--maph:min(78vw,24rem)}
+  :root{--mainpad:.9rem;--maph:min(80vw,26rem)}
   #sidebar{transform:translateX(-105%)}#sidebar.open{transform:none}
   #shell{margin-left:0}#btnMenu{display:grid}
   .top-search{display:none}
+  .bell{margin-left:auto}
   #tabbar{display:block}
   main{padding-bottom:calc(8.4rem + env(safe-area-inset-bottom))}
-  #topbar{margin-bottom:1.2rem}
-  .g12{gap:.7rem}
+  #topbar{margin-bottom:1.2rem;padding:.9rem var(--mainpad)}
+  .g12{gap:.8rem}
   .card{padding:1.1rem;border-radius:1.25rem}
-  .tiles{gap:.6rem}
-  .kpis{gap:.6rem}
-  .sec{margin:.2rem 0}
+  .tiles{gap:.65rem}
+  .kpis{gap:.65rem}
+  .sec{margin:.25rem 0}
+  .sec .sic{width:2.35rem;height:2.35rem}
+  .hero-sm{padding:1.3rem 1.3rem}
+  .pclock{font-size:2.2rem}
+  .box{margin:4vh auto;padding:1.25rem;width:min(34rem,94vw)}
+  .foot{padding-bottom:.5rem}
 }
 
 /* ================= MODAL ================= */
@@ -385,6 +400,8 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 @keyframes pop{from{opacity:0;transform:scale(.96) translateY(.75rem)}to{opacity:1;transform:none}}
 .box h3{font-size:1.05rem;font-weight:800;margin-bottom:1rem;display:flex;justify-content:space-between;align-items:center;gap:.75rem}
 .xbtn{width:2.1rem;height:2.1rem;border-radius:.7rem;display:grid;place-items:center;background:var(--bg);color:#475467;flex:none}
+.statdesc{font-size:.76rem;color:var(--mut);font-weight:600;background:#FFF6DE;border:1px solid #F3E3B3;border-radius:.8rem;padding:.6rem .8rem;margin:-.3rem 0 1rem;display:flex;gap:.5rem;align-items:flex-start}
+.statdesc svg{width:1rem;height:1rem;color:#B45309;flex:none;margin-top:.1rem}
 
 /* ================= KAMERA ================= */
 .cam-wrap{position:absolute;inset:0;background:#000;z-index:2;overflow:hidden}
@@ -557,7 +574,7 @@ textarea.inp{resize:vertical;min-height:5.25rem}
         <div class="tile" id="scLapkin"><div class="tic" style="background:#FDE7E9;color:#B4232A"><i data-lucide="layers"></i></div><div><b>Lapkin</b><small>Form laporan eksternal</small></div><i data-lucide="chevron-right" class="arr"></i></div>
       </div>
 
-      <!-- PETA (sp8, tinggi 29rem) + PANEL LEGENDA DALAM CARD (sp4, scroll internal) -->
+      <!-- PETA + PANEL -->
       <div class="sec">
         <span class="sic" style="background:linear-gradient(135deg,#0EA5E9,#38BDF8)"><i data-lucide="map"></i></span>
         <div><h2>Peta Wilayah & Pantauan</h2><p>Spesifikasi titik, debit rencana, dan petugas pengelola</p></div>
@@ -810,7 +827,7 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 
       <div class="card sp6m">
         <div class="chd"><span class="ic vio"><i data-lucide="calendar-days"></i></span>
-          <div><h3>Status Khusus</h3><small>Sertakan keterangan & lampiran</small></div></div>
+          <div><h3>Status Khusus</h3><small>Sakit/Izin/Dinas/Lupa Absen/Cuti → surat · Kerja Gabungan → selfie</small></div></div>
         <div class="statgrid">
           <button class="schip" data-st="Sakit"><i data-lucide="thermometer"></i>Sakit</button>
           <button class="schip" data-st="Izin"><i data-lucide="file-pen"></i>Izin</button>
@@ -1002,8 +1019,37 @@ textarea.inp{resize:vertical;min-height:5.25rem}
     <img id="shotImg" alt="selfie">
     <div style="display:flex;gap:.7rem;margin-top:1rem">
       <button class="btn btn-o" style="flex:1" id="btnRetake"><i data-lucide="refresh-ccw"></i>Ulangi</button>
-      <button class="btn btn-n" style="flex:1" id="btnSend"><i data-lucide="check-check"></i>Kirim Presensi</button>
+      <button class="btn btn-n" style="flex:1" id="btnSend"><i data-lucide="check-check"></i><span id="btnSendLbl">Kirim Presensi</span></button>
     </div>
+  </div>
+</div>
+<!-- STATUS KHUSUS: rentang tanggal + foto surat (+ no. surat utk Dinas) -->
+<div class="modal" id="statModal"><div class="back" data-close></div>
+  <div class="box">
+    <h3><span id="statTitle">Status Presensi</span> <button class="xbtn" data-close><i data-lucide="x"></i></button></h3>
+    <div class="statdesc"><i data-lucide="info"></i><span id="statDesc">—</span></div>
+    <form id="fStat">
+      <div class="f2">
+        <div class="fld"><label>Rentang Waktu — Mulai</label><input class="inp" type="date" id="stA" required></div>
+        <div class="fld"><label>Sampai Tanggal</label><input class="inp" type="date" id="stB" required></div>
+      </div>
+      <div class="fld" id="stNoWrap" style="display:none">
+        <label>Nomor Surat Tugas / SPPD <span style="color:var(--bad)">*</span></label>
+        <input class="inp" id="stNo" placeholder="Contoh: SPT No. 045/OP3/BBW/2025">
+      </div>
+      <div class="fld"><label>Catatan (opsional)</label><textarea class="inp" id="stNote" style="min-height:3.4rem" placeholder="Keterangan tambahan…"></textarea></div>
+      <div class="fld">
+        <label>Foto Surat / Bukit Dukung <span style="color:var(--bad)">*</span></label>
+        <label class="dropz" id="stDrop">
+          <input type="file" id="stFile" accept="image/*" hidden>
+          <i data-lucide="image-plus"></i>
+          <b id="stDropLbl">Ketuk untuk unggah foto surat</b>
+          <small id="stDropSub">Surat sakit · izin · SPPD · formulir cuti (JPG/PNG)</small>
+        </label>
+        <img id="stPrev" alt="pratinjau surat" hidden>
+      </div>
+      <button class="btn btn-n" style="width:100%"><i data-lucide="send"></i>Simpan Status</button>
+    </form>
   </div>
 </div>
 <div class="modal" id="lapkinModal"><div class="back" data-close></div>
@@ -1024,15 +1070,6 @@ textarea.inp{resize:vertical;min-height:5.25rem}
       </div>
       <div class="fld"><label>Alasan</label><textarea class="inp" id="cAlasan" required></textarea></div>
       <button class="btn btn-n" style="width:100%">Kirim Pengajuan</button>
-    </form>
-  </div>
-</div>
-<div class="modal" id="statModal"><div class="back" data-close></div>
-  <div class="box"><h3><span id="statTitle">Status Presensi</span> <button class="xbtn" data-close><i data-lucide="x"></i></button></h3>
-    <form id="fStat">
-      <div class="fld"><label>Catatan / Keterangan</label><textarea class="inp" id="stNote" placeholder="Contoh: demam, ada surat izin, tugas ke Balai…"></textarea></div>
-      <div class="fld"><label>Lampiran (opsional)</label><input class="inp" type="file" id="stFile"></div>
-      <button class="btn btn-n" style="width:100%">Simpan Status</button>
     </form>
   </div>
 </div>
@@ -1102,6 +1139,15 @@ const LAPKIN=[
 const LKAUD={ppa:'PPA',pekerja:'Pekarya',pengamat:'Staf Pengamat',all:'Info'};
 const LKIC={ppa:'droplets',pekerja:'route',pengamat:'eye',all:'clock'};
 
+/* Konfigurasi Status Khusus: surat wajib, Dinas wajib nomor surat */
+const STATCFG={
+ 'Sakit':      {surat:true, no:false, desc:'Lampirkan foto surat keterangan dokter. Rentang tanggal sesuai masa sakit.'},
+ 'Izin':       {surat:true, no:false, desc:'Lampirkan foto surat izin. Rentang tanggal sesuai izin yang diajukan.'},
+ 'Dinas Luar': {surat:true, no:true,  desc:'Dinas wajib mencantumkan Nomor Surat Tugas/SPPD dan foto surat tugas.'},
+ 'Lupa Absen': {surat:true, no:false, desc:'Lampirkan surat keterangan dari atasan langsung mengenai kelalaian absen.'},
+ 'Cuti':       {surat:true, no:false, desc:'Lampirkan foto formulir cuti yang telah ditandatangani atasan.'}
+};
+
 const GATES=[
  {kode:'Bendung Setail',di:'DI Setail Teknik',tipe:'Bendung',luas:null,debit:'12,4 m³/dtk',pp:'POB SUGENG',coord:[-8.4382,114.1810],kond:'Baik'},
  {kode:'B.BU.2Ka',di:'DI Baru',tipe:'Pintu Air',luas:'42,0 Ha',debit:'50,4 lt/dtk',pp:'AGUS RIYADI',coord:[-8.4404,114.1087],kond:'Baik'},
@@ -1135,17 +1181,18 @@ const ROLES={
  pekerja:{nama:'ARIS SUCAHYO',nip:'NPK.05.91.14.13.016',jabatan:'Pekarya Pengairan',di:'DI Baru'},
  admin:{nama:'Admin Sistem',nip:'—',jabatan:'Administrator',di:'OP3'}};
 const STCLR={'Hadir':'ok','Check-In':'nav','Check-Out':'nav','Sakit':'warn','Izin':'info','Dinas Luar':'vio','Lupa Absen':'bad','Kerja Gabungan':'sky','Cuti':'mut','Disetujui':'ok','Menunggu':'warn','Perlu Revisi':'bad','Terverifikasi':'ok'};
-let S={role:'ppa',user:null,camMode:'in',camStream:null,shot:null,in:null,out:null,chatFilter:'Semua',ft:'all',
+let S={role:'ppa',user:null,camMode:'in',camStream:null,shot:null,in:null,out:null,chatFilter:'Semua',ft:'all',kg:false,
  riwayat:[
   {judul:'Operasi & Pembersihan Pintu',lok:'B.BU.10Ka',tgl:'Hari ini',jam:'07:40',st:'Menunggu',jenis:'Pintu Air',di:'DI Baru'},
   {judul:'Pengukuran Debit Harian',lok:'B.BGO.3Ka',tgl:'Kemarin',jam:'08:05',st:'Disetujui',jenis:'Pintu Air',di:'DI Baru'},
   {judul:'Pembersihan Barang Terapung',lok:'Bendung Setail',tgl:'2 hari lalu',jam:'09:15',st:'Disetujui',jenis:'Bendung',di:'DI Setail Teknik'},
   {judul:'Patroli Saluran Sekunder',lok:'B.BLU.2Ki',tgl:'3 hari lalu',jam:'10:30',st:'Perlu Revisi',jenis:'Saluran / Pekarya',di:'DI Baru'}],
  pres:[
-  {jenis:'Check-Out',t:'Kemarin 16:02',st:'Check-Out',note:''},
-  {jenis:'Check-In',t:'Kemarin 07:12',st:'Check-In',note:''},
-  {jenis:'Izin',t:'2 hari lalu',st:'Izin',note:'Menghadiri undangan kelurahan'},
-  {jenis:'Check-In',t:'3 hari lalu 07:31',st:'Check-In',note:''}],
+  {jenis:'Kerja Gabungan',t:'Kamis 09:30 • Luar Radius',st:'Kerja Gabungan',note:'Penanganan darurat saluran bersama tim',surat:'',no:''},
+  {jenis:'Dinas Luar',t:'8–9 Okt',st:'Dinas Luar',note:'Rakor teknis di Balai',surat:'sppd-okt.jpg',no:'SPT 045/OP3/2025'},
+  {jenis:'Check-Out',t:'Kemarin 16:02',st:'Check-Out',note:'',surat:'',no:''},
+  {jenis:'Check-In',t:'Kemarin 07:12',st:'Check-In',note:'',surat:'',no:''},
+  {jenis:'Sakit',t:'3 Mar',st:'Sakit',note:'Demam',surat:'surat-dokter.jpg',no:''}],
  cuti:[{jenis:'Cuti Tahunan',t:'12–14 Mei 2025',st:'Disetujui'},{jenis:'Cuti Sakit',t:'3 Mar 2025',st:'Disetujui'},{jenis:'Cuti Penting',t:'18 Feb 2025',st:'Menunggu'}],
  tugas:[
   {txt:'Verifikasi pasang pintu B.BU.5Ka2 — laporan miring',due:'Hari ini',by:'Staf Pengamat',done:false},
@@ -1249,15 +1296,19 @@ function initMaps(){
  $('#hsTitik').textContent=GATES.length+' lokasi';}
 function updDist(ll){const d=pmap.distance(ll,office);
  $('#locDist').textContent='Jarak: '+Math.round(d)+' m';
+ $('#locCoord').textContent=ll[0].toFixed(5)+', '+ll[1].toFixed(5);
+ if(S.kg){ // Kerja Gabungan: luar radius diizinkan
+  $('#locStat').textContent='Luar Radius · OK (KG)';
+  $('#locStat').className='badge b-sky';
+  return;}
  const ok=d<=200;$('#locStat').textContent=ok?'Dalam Radius':'Di Luar Radius';
- $('#locStat').className='badge '+(ok?'b-ok':'b-bad');
- $('#locCoord').textContent=ll[0].toFixed(5)+', '+ll[1].toFixed(5);}
+ $('#locStat').className='badge '+(ok?'b-ok':'b-bad');}
  $('#btnLoc').onclick=()=>{if(!navigator.geolocation){toast('Geolokasi tidak didukung');return;}
  toast('Mengambil lokasi…');
  navigator.geolocation.getCurrentPosition(p=>{const ll=[p.coords.latitude,p.coords.longitude];
   userMk.setLatLng(ll);pmap.setView(ll,16);updDist(ll);},()=>toast('Izin lokasi ditolak — memakai posisi demo'));};
 
-/* --- Panel samping peta: dalam CARD, daftar scroll internal --- */
+/* --- Panel samping peta --- */
 function renderGateSide(){
  const GL=GATES.filter(g=>S.ft==='all'||g.tipe===S.ft);
  $('#gateDetail').innerHTML=`
@@ -1409,13 +1460,44 @@ function clock(){const n=new Date();
 setInterval(clock,1000);clock();
  $('#btnIn').onclick=()=>openCam('in');
  $('#btnOut').onclick=()=>{if(!S.in){toast('Anda belum Check-In');return;}openCam('out');};
- $$('.schip').forEach(s=>s.onclick=()=>{$('#statTitle').textContent='Status: '+s.dataset.st;$('#statModal').classList.add('open');$('#statModal').dataset.st=s.dataset.st;icons();});
+
+/* --- Status Khusus: Sakit/Izin/Dinas/Lupa Absen/Cuti → form surat; KG → selfie luar radius --- */
+ $$('.schip').forEach(s=>s.onclick=()=>openStat(s.dataset.st));
+function openStat(st){
+ if(st==='Kerja Gabungan'){ // selfie TANPA batas koordinat
+  S.kg=true;updDist(userMk?pmap.getCenter():[-8.4373,114.1801]);
+  toast('Kerja Gabungan: presensi di luar radius diizinkan');
+  openCam('kg');return;}
+ const c=STATCFG[st];if(!c)return;
+ S.kg=false;
+ $('#statTitle').textContent='Status: '+st;
+ $('#statDesc').textContent=c.desc;
+ $('#stNoWrap').style.display=c.no?'':'none';
+ $('#stNo').required=!!c.no;
+ const d=new Date().toISOString().slice(0,10);
+ $('#stA').value=d;$('#stB').value=d;
+ // reset upload
+ $('#stFile').value='';$('#stPrev').hidden=true;$('#stPrev').removeAttribute('src');
+ $('#stDropLbl').textContent='Ketuk untuk unggah foto surat';
+ $('#statModal').dataset.st=st;
+ $('#statModal').classList.add('open');icons();}
+ $('#stFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;
+ $('#stPrev').src=URL.createObjectURL(f);$('#stPrev').hidden=false;
+ $('#stDropLbl').textContent='📎 '+f.name;});
  $('#fStat').onsubmit=e=>{e.preventDefault();const st=$('#statModal').dataset.st;
- S.pres.unshift({jenis:st,t:'Hari ini '+fmtT(new Date()),st,note:$('#stNote').value});
- $('#statModal').classList.remove('open');$('#stNote').value='';renderPres();renderMini();toast('Status "'+st+'" tersimpan — menunggu approve Staf Pengamat');};
+ if(!$('#stFile').files[0]){toast('Foto surat wajib dilampirkan');return;}
+ if($('#stNo').required&&!$('#stNo').value.trim()){toast('Nomor surat tugas wajib diisi');return;}
+ const A=$('#stA').value,B=$('#stB').value;
+ const rng=(A===B)?new Date(A).toLocaleDateString('id-ID',{day:'numeric',month:'short'})
+  :new Date(A).toLocaleDateString('id-ID',{day:'numeric',month:'short'})+' – '+new Date(B).toLocaleDateString('id-ID',{day:'numeric',month:'short'});
+ S.pres.unshift({jenis:st,t:rng,st,note:$('#stNote').value,
+  surat:$('#stFile').files[0].name,no:$('#stNo').value.trim()});
+ $('#statModal').classList.remove('open');
+ renderPres();renderMini();
+ toast('Status "'+st+'" tersimpan — menunggu approve Staf Pengamat');};
 function renderPres(){$('#presRwy').innerHTML=S.pres.map(p=>`
- <div class="rrow"><div class="ric" style="background:#EEF1F7;color:var(--navy)"><i data-lucide="${p.jenis.includes('Check')?'log-in':'file-pen'}"></i></div>
- <div class="rmain"><b>${p.jenis}${p.note?' — '+p.note.slice(0,26):''}</b><span>${p.t}</span></div>
+ <div class="rrow"><div class="ric" style="background:#EEF1F7;color:var(--navy)"><i data-lucide="${p.jenis.includes('Check')?'log-in':(p.jenis==='Kerja Gabungan'?'users':'file-pen')}"></i></div>
+ <div class="rmain"><b>${p.jenis}${p.no?' · '+p.no:''}</b><span>${p.t}${p.surat?' • 📄 '+p.surat:''}${p.note?' • '+p.note.slice(0,24):''}</span></div>
  <span class="badge ${bcl(p.st)}">${p.st}</span></div>`).join('');icons();}
 function updPresBtns(){$('#btnIn').disabled=!!S.in;$('#btnOut').disabled=!S.in;
  $('#inTime').textContent=S.in?('Check In '+fmtT(S.in)):'Belum Check In';
@@ -1425,8 +1507,15 @@ function updPresBtns(){$('#btnIn').disabled=!!S.in;$('#btnOut').disabled=!S.in;
 
 /* ============ KAMERA ============ */
 function openCam(mode){S.camMode=mode;$('#camFrame').classList.remove('ok');
- $('#camTitle').textContent=mode==='in'?'SELFIE — CHECK IN':'SELFIE — CHECK OUT';
- $('#camHint').innerHTML='Cari posisi wajah di dalam bingkai<small>Deteksi wajah aktif — pastikan pencahayaan cukup</small>';
+ if(mode==='kg'){
+  $('#camTitle').textContent='SELFIE — KERJA GABUNGAN';
+  $('#camHint').innerHTML='Kerja Gabungan — lokasi bebas<small>Luar radius diizinkan: penanganan darurat / tenaga gabungan</small>';
+  $('#btnSendLbl').textContent='Kirim Kerja Gabungan';
+ }else{
+  $('#camTitle').textContent=mode==='in'?'SELFIE — CHECK IN':'SELFIE — CHECK OUT';
+  $('#camHint').innerHTML='Cari posisi wajah di dalam bingkai<small>Deteksi wajah aktif — pastikan pencahayaan cukup</small>';
+  $('#btnSendLbl').textContent='Kirim Presensi';
+ }
  $('#camModal').classList.add('open');icons();$('#camPh').style.display='none';
  if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
   navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:{ideal:720}}})
@@ -1436,9 +1525,11 @@ function openCam(mode){S.camMode=mode;$('#camFrame').classList.remove('ok');
  detectFace();}
 function detectFace(){setTimeout(()=>{if(!$('#camModal').classList.contains('open'))return;
  $('#camFrame').classList.add('ok');
- $('#camHint').innerHTML='Wajah terdeteksi ✓<small>Tekan tombol shutter untuk mengambil foto</small>';},1400);}
+ $('#camHint').innerHTML=(S.camMode==='kg'?'Kerja Gabungan — lokasi bebas ✓':'Wajah terdeteksi ✓')+'<small>Tekan tombol shutter untuk mengambil foto</small>';},1400);}
  $('#camClose').onclick=closeCam;
 function closeCam(){if(S.camStream){S.camStream.getTracks().forEach(t=>t.stop());S.camStream=null;}
+ S.kg=false; // reset mode KG bila dibatalkan
+ if(typeof pmap!=='undefined'&&userMk)updDist(userMk.getLatLng());
  $('#camModal').classList.remove('open');}
  $('#camSwitch').onclick=()=>toast('Ganti kamera depan/belakang (demo)');
  $('#camShot').onclick=()=>{const cv=document.createElement('canvas');cv.width=720;cv.height=960;const ctx=cv.getContext('2d');
@@ -1454,13 +1545,17 @@ function closeCam(){if(S.camStream){S.camStream.getTracks().forEach(t=>t.stop())
  ctx.fillStyle='#fff';ctx.font='700 26px system-ui';ctx.fillText(S.user?S.user.nama:'',28,860);
  ctx.font='500 19px ui-monospace,Menlo,monospace';ctx.fillStyle='#FFD75E';
  ctx.fillText((S.user?S.user.nip:'')+' · '+n.toLocaleDateString('id-ID')+' '+n.toLocaleTimeString('id-ID',{hour12:false}),28,892);
- ctx.fillStyle='#fff';ctx.fillText('Lat,Lng: '+($('#locCoord').textContent||'-')+'  ·  E-PRESENSI OP3 BBWS BRANTAS',28,924);
+ ctx.fillStyle='#fff';
+ ctx.fillText((S.camMode==='kg'?'KERJA GABUNGAN · LUAR RADIUS OK':'Lat,Lng: '+($('#locCoord').textContent||'-'))+'  ·  E-PRESENSI OP3 BBWS BRANTAS',28,924);
  $('#shotImg').src=cv.toDataURL('image/jpeg',.9);
  $('#camModal').classList.remove('open');$('#shotModal').classList.add('open');icons();};
  $('#btnRetake').onclick=()=>{$('#shotModal').classList.remove('open');openCam(S.camMode);};
  $('#btnSend').onclick=()=>{const t=new Date();
- if(S.camMode==='in'){S.in=t;S.pres.unshift({jenis:'Check-In',t:'Hari ini '+fmtT(t),st:'Check-In',note:''});toast('Check-In berhasil — selfie terverifikasi ✓');}
- else{S.out=t;S.pres.unshift({jenis:'Check-Out',t:'Hari ini '+fmtT(t),st:'Check-Out',note:''});toast('Check-Out berhasil — sampai jumpa besok!');}
+ if(S.camMode==='kg'){
+  S.pres.unshift({jenis:'Kerja Gabungan',t:'Hari ini '+fmtT(t)+' • Luar Radius',st:'Kerja Gabungan',note:'Presensi di lokasi kerja gabungan',surat:'',no:''});
+  toast('Presensi Kerja Gabungan terkirim ✓ (lokasi luar radius diizinkan)');
+ }else if(S.camMode==='in'){S.in=t;S.pres.unshift({jenis:'Check-In',t:'Hari ini '+fmtT(t),st:'Check-In',note:'',surat:'',no:''});toast('Check-In berhasil — selfie terverifikasi ✓');}
+ else{S.out=t;S.pres.unshift({jenis:'Check-Out',t:'Hari ini '+fmtT(t),st:'Check-Out',note:'',surat:'',no:''});toast('Check-Out berhasil — sampai jumpa besok!');}
  $('#shotModal').classList.remove('open');closeCam();updPresBtns();renderPres();renderMini();};
 
 /* ============ NOTIF & CHAT ============ */
