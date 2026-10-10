@@ -319,12 +319,48 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 .spec small{font-size:.6rem;color:var(--mut);font-weight:800;text-transform:uppercase;letter-spacing:.4px}
 .spec b{font-size:.9rem;display:block;margin-top:.15rem}
 .glist{display:flex;flex-direction:column;gap:.15rem;overflow:auto;flex:1;min-height:0;padding-right:.2rem}
-.grow{display:flex;align-items:center;gap:.6rem;padding:.48rem .55rem;border-radius:.7rem;text-align:left;transition:.12s;flex:none}
+.grow{display:flex;align-items:center;gap:.55rem;padding:.42rem .5rem;border-radius:.7rem;text-align:left;transition:.12s;flex:none;width:100%}
 .grow:hover{background:#E9EDF7}
-.gdot{width:.6rem;height:.6rem;border-radius:50%;flex:none}
+.grow.sel{background:#E7ECFA;box-shadow:inset 0 0 0 1.5px #B9C9EE}
+.gdot{width:.55rem;height:.55rem;border-radius:50%;flex:none}
+.gav{width:2.1rem;height:2.1rem;border-radius:.6rem;overflow:hidden;flex:none;border:1.5px solid var(--line)}
+.gav img{width:100%;height:100%;object-fit:cover;display:block}
 .gmain{flex:1;min-width:0}
-.gmain b{font-size:.76rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.gmain small{font-size:.62rem;color:var(--mut);font-weight:600;display:block}
+.gmain b{font-size:.74rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gmain small{font-size:.6rem;color:var(--mut);font-weight:600;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gcam{width:1.9rem;height:1.9rem;border-radius:.55rem;display:grid;place-items:center;color:var(--navy);background:#EEF2FB;flex:none}
+.gcam:hover{background:#DCE6FA}
+.gcam svg{width:.95rem;height:.95rem}
+
+/* ---- Legend baru ---- */
+.lgd{background:var(--bg);border-radius:1rem;padding:.8rem .85rem;display:flex;flex-direction:column;gap:.6rem;flex:none}
+.lgd-hd{display:flex;align-items:center;gap:.45rem;font-size:.72rem;font-weight:800;color:var(--deep)}
+.lgd-hd svg{width:.9rem;height:.9rem;color:var(--navy)}
+.lgd-hd .cnt{margin-left:auto;font-size:.58rem;font-weight:800;color:var(--navy);background:#E7ECFA;padding:.15rem .5rem;border-radius:99px}
+.lgd .lbl{font-size:.55rem;font-weight:800;letter-spacing:.6px;color:#98A2B3;text-transform:uppercase}
+.lgd-chips{display:flex;flex-wrap:wrap;gap:.3rem}
+.lchip{font-size:.62rem;font-weight:800;padding:.32rem .6rem;border-radius:99px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line);color:var(--mut);white-space:nowrap;transition:.12s}
+.lchip:hover{box-shadow:inset 0 0 0 1.5px var(--navy);color:var(--navy)}
+.lchip.on{background:var(--navy);color:#fff;box-shadow:none}
+.lchip.lock{opacity:.6;cursor:default}
+.lchip.lock:hover{box-shadow:inset 0 0 0 1.5px var(--line);color:var(--mut)}
+.lgd-rows{display:grid;grid-template-columns:1fr 1fr;gap:.2rem .5rem}
+@media(max-width:1099.98px){.lgd-rows{grid-template-columns:1fr 1fr}}
+.lgd-row{display:flex;align-items:center;gap:.4rem;padding:.32rem .45rem;border-radius:.55rem;font-size:.63rem;font-weight:800;color:#475467;cursor:pointer;transition:.12s;min-width:0}
+.lgd-row i{width:.5rem;height:.5rem;border-radius:.18rem;flex:none}
+.lgd-row b{margin-left:auto;font-size:.56rem;color:var(--mut)}
+.lgd-row:hover{background:#E4E9F5}
+.lgd-row.on{background:#E7ECFA;color:var(--navy)}
+.lgd-row.dis{opacity:.4;cursor:default}
+.lgd-row.dis:hover{background:transparent}
+
+/* ---- Foto di panel detail ---- */
+.gd-photo{position:relative;border-radius:.9rem;overflow:hidden;cursor:pointer;flex:none;background:#E7ECFA;min-height:7.5rem}
+.gd-photo img{width:100%;height:8.5rem;object-fit:cover;display:block}
+.gd-photo span{position:absolute;left:.55rem;bottom:.55rem;display:inline-flex;align-items:center;gap:.35rem;background:rgba(13,26,58,.88);color:#fff;font-size:.6rem;font-weight:800;padding:.3rem .6rem;border-radius:99px}
+.gd-photo span svg{width:.75rem;height:.75rem;color:var(--gold)}
+.gd-pet{display:flex;gap:.7rem;align-items:center}
+.gd-pet .gav{width:2.9rem;height:2.9rem;border-radius:.8rem;cursor:pointer}
 
 /* ================= STATISTIK ================= */
 .donutv2{display:flex;flex-direction:column;align-items:center;gap:1.15rem}
@@ -363,7 +399,7 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 .carrow{margin-left:1.05rem;color:#C3CDE4;line-height:0}
 .carrow svg{width:1.05rem;height:1.05rem}
 
-/* ================= MISC PAGES ================= */
+/* ================= MISC ================= */
 .lap-head{display:flex;align-items:center;justify-content:space-between;gap:.8rem;flex-wrap:wrap;margin-bottom:var(--gap)}
 .extrow{display:flex;gap:.55rem;flex-wrap:wrap}
 .lapkin{display:flex;flex-direction:column;gap:.7rem}
@@ -432,6 +468,8 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 .xbtn{width:2.1rem;height:2.1rem;border-radius:.7rem;display:grid;place-items:center;background:var(--bg);color:#475467;flex:none}
 .surt{width:100%;max-height:15rem;object-fit:contain;border-radius:.8rem;background:var(--bg);border:1px solid var(--line);margin-bottom:.8rem}
 .nofile{display:grid;place-items:center;background:var(--bg);border:1px dashed var(--line);border-radius:.8rem;padding:1.4rem;color:var(--mut);font-weight:700;font-size:.76rem;margin-bottom:.8rem}
+#fotoImg{width:100%;max-height:26rem;object-fit:contain;border-radius:1rem;background:var(--bg)}
+#fotoCap{text-align:center;font-size:.74rem;color:var(--mut);font-weight:700;margin-top:.7rem}
 
 /* ================= KAMERA ================= */
 .cam-wrap{position:absolute;inset:0;background:#000;z-index:2;overflow:hidden}
@@ -639,15 +677,8 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 
       <div class="sec">
         <span class="sic" style="background:linear-gradient(135deg,#0EA5E9,#38BDF8)"><i data-lucide="map"></i></span>
-        <div><h2>Peta Wilayah & Pantauan</h2><p>Spesifikasi titik, debit rencana, dan petugas pengelola</p></div>
-        <div class="sr">
-          <span class="badge b-nav" id="mapCount">—</span>
-          <div id="mapChips" style="display:flex;gap:.45rem;flex-wrap:wrap">
-            <button class="fchip on" data-ft="all">Semua</button>
-            <button class="fchip" data-ft="Pintu Air">Pintu Air</button>
-            <button class="fchip" data-ft="Bendung">Bendung</button>
-          </div>
-        </div>
+        <div><h2>Peta Wilayah & Pantauan</h2><p id="mapRoleNote">Tampilan menyesuaikan peran Anda</p></div>
+        <div class="sr"><span class="badge b-nav" id="mapCount">—</span></div>
       </div>
 
       <div class="sp8 mapcol"><div class="mapframe"><div id="map"></div></div></div>
@@ -1128,6 +1159,14 @@ textarea.inp{resize:vertical;min-height:5.25rem}
     </div>
   </div>
 </div>
+<!-- Foto lightbox (petugas / pintu air) -->
+<div class="modal" id="fotoModal"><div class="back" data-close></div>
+  <div class="box" style="max-width:26rem;text-align:center">
+    <h3><span id="fotoTitle">Foto</span> <button class="xbtn" data-close><i data-lucide="x"></i></button></h3>
+    <img id="fotoImg" alt="foto">
+    <p id="fotoCap">—</p>
+  </div>
+</div>
 <!-- Status Khusus -->
 <div class="modal" id="statModal"><div class="back" data-close></div>
   <div class="box">
@@ -1222,12 +1261,13 @@ textarea.inp{resize:vertical;min-height:5.25rem}
 <script>
 /* ============================================================
    SIAP OP3 — UI prototype (backend-ready data structure)
-   Setiap entri: {id, created_at, status, ...} → siap dipetakan ke DB
    ============================================================ */
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const nowISO=()=>new Date().toISOString();
 
 const DIs=['DI Baru','DI Porolinggo','DI Setail Teknik','DI Kali Setail'];
+const DICOL={'DI Baru':'#1B3C87','DI Porolinggo':'#F0A500','DI Setail Teknik':'#0EA5E9','DI Kali Setail':'#8B5CF6'};
+
 let EMP=[
  ['NSP.05.84.15.13.027','ABDULRAHMAN AN YUSUF','Staf Pengamat','DI Baru'],
  ['NPA.05.86.09.13.016','AGUS RIYADI','Petugas Pintu Air','DI Baru'],
@@ -1248,7 +1288,6 @@ let EMP=[
  ['NPK.06.86.20.20.019','ANANG MUSTAKIM','Pekarya Pengairan','DI Kali Setail']
 ].map(e=>({nip:e[0],nama:e[1],jabatan:e[2],di:e[3]}));
 
-/* Akun (mock auth — nanti digantikan endpoint /auth/login) */
 let ACC={
  agus:   {pw:'123456',role:'ppa',      nama:'AGUS RIYADI',     nip:'NPA.05.86.09.13.016', aktif:true},
  eko:    {pw:'123456',role:'pengamat', nama:'EKO ADI PURWANTO',nip:'NSP.05.76.09.13.002', aktif:true},
@@ -1276,32 +1315,34 @@ const STATCFG={
  'Lupa Absen': {surat:true,no:false,desc:'Lampirkan surat keterangan dari atasan langsung mengenai kelalaian absen.'},
  'Cuti':       {surat:true,no:false,desc:'Lampirkan foto formulir cuti yang telah ditandatangani atasan.'}
 };
-/* Ambang debit POB → alert */
 const DEBITCFG={min:8,max:15};
 
+/* GATES: +korsda (dari Excel, sample) — foto dibaca dari assets/gate/<slug>.jpg */
 const GATES=[
- {kode:'Bendung Setail',di:'DI Setail Teknik',tipe:'Bendung',luas:null,debit:'12,4 m³/dtk',pp:'POB SUGENG',coord:[-8.4382,114.1810],kond:'Baik'},
- {kode:'B.BU.2Ka',di:'DI Baru',tipe:'Pintu Air',luas:'42,0 Ha',debit:'50,4 lt/dtk',pp:'AGUS RIYADI',coord:[-8.4404,114.1087],kond:'Baik'},
- {kode:'B.BU.10Ka',di:'DI Baru',tipe:'Pintu Air',luas:'123,0 Ha',debit:'147,6 lt/dtk',pp:'BAMBANG SUBIARTO',coord:[-8.4417,114.1011],kond:'Baik'},
- {kode:'B.BU.5Ka2',di:'DI Baru',tipe:'Pintu Air',luas:'20,0 Ha',debit:'24,0 lt/dtk',pp:'ARIF EVARULI',coord:[-8.4465,114.1190],kond:'Perlu Perhatian'},
- {kode:'B.BGO.1Te2',di:'DI Baru',tipe:'Pintu Air',luas:'83,0 Ha',debit:'99,6 lt/dtk',pp:'ANANG SUJARWOKO',coord:[-8.4440,114.1165],kond:'Baik'},
- {kode:'B.BU.6Ka',di:'DI Baru',tipe:'Pintu Air',luas:'43,0 Ha',debit:'51,6 lt/dtk',pp:'DENI KRISTIAWAN',coord:[-8.4510,114.1248],kond:'Baik'},
- {kode:'B.BGO.3Ka',di:'DI Baru',tipe:'Pintu Air',luas:'122,0 Ha',debit:'146,4 lt/dtk',pp:'AGUS RIYADI',coord:[-8.4563,114.1343],kond:'Baik'},
- {kode:'B.BLU.2Ki',di:'DI Baru',tipe:'Pintu Air',luas:'147,0 Ha',debit:'176,4 lt/dtk',pp:'BAMBANG SUBIARTO',coord:[-8.4599,114.1555],kond:'Baik'},
- {kode:'B.BLU.4Te',di:'DI Baru',tipe:'Pintu Air',luas:'156,0 Ha',debit:'187,2 lt/dtk',pp:'ARIF EVARULI',coord:[-8.4606,114.1611],kond:'Baik'},
- {kode:'B.GA.2Ka',di:'DI Baru',tipe:'Pintu Air',luas:'52,0 Ha',debit:'62,4 lt/dtk',pp:'DENI KRISTIAWAN',coord:[-8.4611,114.1666],kond:'Rusak Ringan'},
- {kode:'B.PWO.4Ka',di:'DI Baru',tipe:'Pintu Air',luas:'266,0 Ha',debit:'319,2 lt/dtk',pp:'ANANG SUJARWOKO',coord:[-8.4709,114.1596],kond:'Baik'},
- {kode:'B.KS1.1Ka',di:'DI Porolinggo',tipe:'Pintu Air',luas:'189,0 Ha',debit:'226,8 lt/dtk',pp:'ACHMAD ROFIQ',coord:[-8.4856,114.1463],kond:'Baik'},
- {kode:'B.PG.7Ki',di:'DI Porolinggo',tipe:'Pintu Air',luas:'165,0 Ha',debit:'198,0 lt/dtk',pp:'ACHMAD ROFIQ',coord:[-8.4949,114.1928],kond:'Baik'},
- {kode:'B.KS.3Ki',di:'DI Porolinggo',tipe:'Pintu Air',luas:'310,0 Ha',debit:'372,0 lt/dtk',pp:'ACHMAD ROFIQ',coord:[-8.4868,114.1950],kond:'Baik'},
- {kode:'B.CL.4Ka',di:'DI Setail Teknik',tipe:'Pintu Air',luas:'114,0 Ha',debit:'136,8 lt/dtk',pp:'ANANG SUGIARTO',coord:[-8.4470,114.1900],kond:'Baik'},
- {kode:'B.CL.11Ka',di:'DI Setail Teknik',tipe:'Pintu Air',luas:'97,0 Ha',debit:'116,4 lt/dtk',pp:'JARKASI',coord:[-8.4900,114.2040],kond:'Perlu Perhatian'},
- {kode:'B.KD.1Ka',di:'DI Kali Setail',tipe:'Pintu Air',luas:'129,0 Ha',debit:'154,8 lt/dtk',pp:'AGUS HARYANTO',coord:[-8.4310,114.2114],kond:'Baik'},
- {kode:'B.KR.1Ka',di:'DI Kali Setail',tipe:'Pintu Air',luas:'121,0 Ha',debit:'145,2 lt/dtk',pp:'AGUS HARYANTO',coord:[-8.4346,114.2216],kond:'Baik'},
- {kode:'B.SBI.1Ka',di:'DI Kali Setail',tipe:'Pintu Air',luas:'123,0 Ha',debit:'147,6 lt/dtk',pp:'AGUS NURYANTO',coord:[-8.4367,114.2261],kond:'Baik'},
- {kode:'B.WPT.1Ki',di:'DI Kali Setail',tipe:'Pintu Air',luas:'78,4 Ha',debit:'94,1 lt/dtk',pp:'AGUS NURYANTO',coord:[-8.4846,114.1950],kond:'Baik'},
- {kode:'B.TM.1Ka',di:'DI Baru',tipe:'Pintu Air',luas:'121,0 Ha',debit:'145,2 lt/dtk',pp:'DENI KRISTIAWAN',coord:[-8.4885,114.2003],kond:'Baik'},
- {kode:'B.BR.3Ki',di:'DI Kali Setail',tipe:'Pintu Air',luas:'57,0 Ha',debit:'68,4 lt/dtk',pp:'AGUS HARYANTO',coord:[-8.4340,114.2194],kond:'Baik'}
+ {kode:'Bendung Setail',di:'DI Setail Teknik',korsda:'Cluring',tipe:'Bendung',luas:null,debit:'12,4 m³/dtk',pp:'POB SUGENG',coord:[-8.4382,114.1810],kond:'Baik'},
+ {kode:'B.BU.2Ka',di:'DI Baru',korsda:'Bangorejo',tipe:'Pintu Air',luas:'42,0 Ha',debit:'50,4 lt/dtk',pp:'AGUS RIYADI',coord:[-8.4404,114.1087],kond:'Baik'},
+ {kode:'B.BU.10Ka',di:'DI Baru',korsda:'Bangorejo',tipe:'Pintu Air',luas:'123,0 Ha',debit:'147,6 lt/dtk',pp:'BAMBANG SUBIARTO',coord:[-8.4417,114.1011],kond:'Baik'},
+ {kode:'B.BU.5Ka2',di:'DI Baru',korsda:'Bulurejo',tipe:'Pintu Air',luas:'20,0 Ha',debit:'24,0 lt/dtk',pp:'ARIF EVARULI',coord:[-8.4465,114.1190],kond:'Perlu Perhatian'},
+ {kode:'B.BGO.1Te2',di:'DI Baru',korsda:'Bangorejo',tipe:'Pintu Air',luas:'83,0 Ha',debit:'99,6 lt/dtk',pp:'ANANG SUJARWOKO',coord:[-8.4440,114.1165],kond:'Baik'},
+ {kode:'B.BU.6Ka',di:'DI Baru',korsda:'Bulurejo',tipe:'Pintu Air',luas:'43,0 Ha',debit:'51,6 lt/dtk',pp:'DENI KRISTIAWAN',coord:[-8.4510,114.1248],kond:'Baik'},
+ {kode:'B.BGO.3Ka',di:'DI Baru',korsda:'Bangorejo',tipe:'Pintu Air',luas:'122,0 Ha',debit:'146,4 lt/dtk',pp:'AGUS RIYADI',coord:[-8.4563,114.1343],kond:'Baik'},
+ {kode:'B.BLU.2Ki',di:'DI Baru',korsda:'Bulurejo',tipe:'Pintu Air',luas:'147,0 Ha',debit:'176,4 lt/dtk',pp:'BAMBANG SUBIARTO',coord:[-8.4599,114.1555],kond:'Baik'},
+ {kode:'B.BLU.4Te',di:'DI Baru',korsda:'Bulurejo',tipe:'Pintu Air',luas:'156,0 Ha',debit:'187,2 lt/dtk',pp:'ARIF EVARULI',coord:[-8.4606,114.1611],kond:'Baik'},
+ {kode:'B.GA.2Ka',di:'DI Baru',korsda:'Quring',tipe:'Pintu Air',luas:'52,0 Ha',debit:'62,4 lt/dtk',pp:'DENI KRISTIAWAN',coord:[-8.4611,114.1666],kond:'Rusak Ringan'},
+ {kode:'B.PWO.4Ka',di:'DI Baru',korsda:'Bangorejo',tipe:'Pintu Air',luas:'266,0 Ha',debit:'319,2 lt/dtk',pp:'ANANG SUJARWOKO',coord:[-8.4709,114.1596],kond:'Baik'},
+ {kode:'B.KS1.1Ka',di:'DI Porolinggo',korsda:'Pesanggaran',tipe:'Pintu Air',luas:'189,0 Ha',debit:'226,8 lt/dtk',pp:'ACHMAD ROFIQ',coord:[-8.4856,114.1463],kond:'Baik'},
+ {kode:'B.PG.7Ki',di:'DI Porolinggo',korsda:'Pesanggaran',tipe:'Pintu Air',luas:'165,0 Ha',debit:'198,0 lt/dtk',pp:'ACHMAD ROFIQ',coord:[-8.4949,114.1928],kond:'Baik'},
+ {kode:'B.KS.3Ki',di:'DI Porolinggo',korsda:'Pesanggaran',tipe:'Pintu Air',luas:'310,0 Ha',debit:'372,0 lt/dtk',pp:'ACHMAD ROFIQ',coord:[-8.4868,114.1950],kond:'Baik'},
+ {kode:'B.CL.4Ka',di:'DI Setail Teknik',korsda:'Cluring',tipe:'Pintu Air',luas:'114,0 Ha',debit:'136,8 lt/dtk',pp:'ANANG SUGIARTO',coord:[-8.4470,114.1900],kond:'Baik'},
+ {kode:'B.CL.11Ka',di:'DI Setail Teknik',korsda:'Cluring',tipe:'Pintu Air',luas:'97,0 Ha',debit:'116,4 lt/dtk',pp:'JARKASI',coord:[-8.4900,114.2040],kond:'Perlu Perhatian'},
+ {kode:'B.KD.1Ka',di:'DI Kali Setail',korsda:'Quring',tipe:'Pintu Air',luas:'129,0 Ha',debit:'154,8 lt/dtk',pp:'AGUS HARYANTO',coord:[-8.4310,114.2114],kond:'Baik'},
+ {kode:'B.KR.1Ka',di:'DI Kali Setail',korsda:'Quring',tipe:'Pintu Air',luas:'121,0 Ha',debit:'145,2 lt/dtk',pp:'AGUS HARYANTO',coord:[-8.4346,114.2216],kond:'Baik'},
+ {kode:'B.SBI.1Ka',di:'DI Kali Setail',korsda:'Quring',tipe:'Pintu Air',luas:'123,0 Ha',debit:'147,6 lt/dtk',pp:'AGUS NURYANTO',coord:[-8.4367,114.2261],kond:'Baik'},
+ {kode:'B.WPT.1Ki',di:'DI Kali Setail',korsda:'Quring',tipe:'Pintu Air',luas:'78,4 Ha',debit:'94,1 lt/dtk',pp:'AGUS NURYANTO',coord:[-8.4846,114.1950],kond:'Baik'},
+ {kode:'B.TM.1Ka',di:'DI Baru',korsda:'Bangorejo',tipe:'Pintu Air',luas:'121,0 Ha',debit:'145,2 lt/dtk',pp:'DENI KRISTIAWAN',coord:[-8.4885,114.2003],kond:'Baik'},
+ {kode:'B.BR.3Ki',di:'DI Kali Setail',korsda:'Quring',tipe:'Pintu Air',luas:'57,0 Ha',debit:'68,4 lt/dtk',pp:'AGUS HARYANTO',coord:[-8.4340,114.2194],kond:'Baik'},
+ {kode:'B.BR.1Ka',di:'DI Baru',korsda:'Bangorejo',tipe:'Pintu Air',luas:'20,0 Ha',debit:'24,0 lt/dtk',pp:'ARIS SUCAHYO',coord:[-8.4356,114.1220],kond:'Baik'},
+ {kode:'B.BR.1Ki',di:'DI Baru',korsda:'Bulurejo',tipe:'Pintu Air',luas:'58,0 Ha',debit:'69,6 lt/dtk',pp:'ARIS SUCAHYO',coord:[-8.4372,114.1244],kond:'Baik'}
 ];
 const ASETS=[[1,'Bangorejo','Primair Baru','B.BU.0','B01'],[2,'Bangorejo','Primair Baru','B.BU.1a','C05'],[4,'Bangorejo','Primair Baru','B.BU.1','P01'],[12,'Bangorejo','Primair Baru','B.BU.2','P03'],[116,'Bangorejo','Sekunder Bangorejo','B.BGO.1a','O01'],[122,'Bangorejo','Sekunder Bangorejo','B.BGO.1','P02'],[175,'Bulurejo','Sekunder Bulurejo','B.BLU.1a','O09'],[190,'Bulurejo','Sekunder Bulurejo','B.BLU.1','P02'],[236,'Quring','Sekunder Qurah Gulung','B.CG.1a','O01'],[468,'Tamansuruh','Sekunder Tamansuruh','B.TSU.1','O01'],[1081,'Pesanggaran','Sekunder Kesilir','B.KS1a','O06'],[1583,'Sumbermulyo','Sekunder Sumbermulyo','B.SM.5k','O03']];
 const ROLES={
@@ -1313,10 +1354,10 @@ const ROLES={
  admin:{nama:'Admin Sistem',nip:'—',jabatan:'Administrator',di:'OP3'}};
 const STCLR={'Hadir':'ok','Check-In':'nav','Check-Out':'nav','Sakit':'warn','Izin':'info','Dinas Luar':'vio','Lupa Absen':'bad','Kerja Gabungan':'sky','Cuti':'mut','Disetujui':'ok','Menunggu':'warn','Perlu Revisi':'bad','Ditolak':'bad','Terverifikasi':'ok'};
 
-/* ---------- STATE + PERSISTENCE (localStorage → nanti API) ---------- */
-const PKEY='siap_op3_data_v2';
+/* ---------- STATE + PERSISTENCE ---------- */
+const PKEY='siap_op3_data_v3';
 let S={role:null,user:null,username:null,camMode:'in',camStream:null,shot:null,in:null,out:null,
- chatFilter:'Semua',ft:'all',kg:false,appTab:'lap',
+ chatFilter:'Semua',ft:'all',kg:false,appTab:'lap',mapScope:'all',korsda:'all',selGate:null,
  riwayat:[
   {id:uid(),created_at:nowISO(),judul:'Operasi & Pembersihan Pintu',lok:'B.BU.10Ka',tgl:'Hari ini',jam:'07:40',status:'Menunggu',jenis:'Pintu Air',di:'DI Baru',rev_note:null},
   {id:uid(),created_at:nowISO(),judul:'Pengukuran Debit Harian',lok:'B.BGO.3Ka',tgl:'Kemarin',jam:'08:05',status:'Disetujui',jenis:'Pintu Air',di:'DI Baru',rev_note:null},
@@ -1359,7 +1400,7 @@ let S={role:null,user:null,username:null,camMode:'in',camStream:null,shot:null,i
 
 function save(){try{localStorage.setItem(PKEY,JSON.stringify({
  riwayat:S.riwayat,pres:S.pres,cuti:S.cuti,tugas:S.tugas,debits:S.debits,docs:S.docs,acc:ACC,in:S.in,out:S.out}));}
- catch(e){/* quota penuh (foto besar) — di produksi file diupload ke storage */}}
+ catch(e){}}
 function load(){try{const d=JSON.parse(localStorage.getItem(PKEY));if(!d)return;
  ['riwayat','pres','cuti','tugas','debits','docs'].forEach(k=>{if(d[k])S[k]=d[k];});
  if(d.acc)ACC=d.acc; if(d.in)S.in=new Date(d.in); if(d.out)S.out=new Date(d.out);}catch(e){}}
@@ -1372,7 +1413,6 @@ function icons(){if(window.lucide)lucide.createIcons();}
 function toast(msg){const t=$('#toast');$('#toastTxt').textContent=msg;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),2600);}
 function bcl(st){return 'b-'+(STCLR[st]||'mut');}
 function initials(n){return n.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();}
-/* Kompres foto surat → dataURL JPEG (nanti: upload ke storage) */
 function compressImg(file,cb,max=900,q=.7){
  const img=new Image(),url=URL.createObjectURL(file);
  img.onload=()=>{const r=Math.min(1,max/Math.max(img.width,img.height));
@@ -1383,11 +1423,10 @@ function compressImg(file,cb,max=900,q=.7){
 
 /* ============ LOGO & WATERMARK ============ */
 const LOGO_PATH={
-  kemenpu:'assets/logo-kemenpu.png',   // logo horizontal KemenPU + tagline
-  mark:'assets/logo-mark.png',         // ikon persegi
-  bbws:'assets/logo-bbws.png'          // logo BBWS Brantas horizontal
+  kemenpu:'assets/logo-kemenpu.png',
+  mark:'assets/logo-mark.png',
+  bbws:'assets/logo-bbws.png'
 };
-/* Fallback SVG menyerupai logo mark (tampil jika file belum diupload) */
 const FALLBACK_MARK='data:image/svg+xml;utf8,'+encodeURIComponent(
  `<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'>`+
  `<rect width='120' height='120' rx='26' fill='#2C4A7C'/>`+
@@ -1397,7 +1436,6 @@ const FALLBACK_MARK='data:image/svg+xml;utf8,'+encodeURIComponent(
  `<path d='M84 78a20 20 0 0 0 20 20v8H84z' fill='#F2B705'/></svg>`);
 
 function markBadge(el){const b=el.closest('.brand-badge');if(b)b.classList.add('hasimg');}
-
 function smartLogo(el,path,opt={}){
   if(!el)return;
   const {fallbackMark=false,hideSep=null,failGroup=null}=opt;
@@ -1414,23 +1452,56 @@ function smartLogo(el,path,opt={}){
   };
   el.src=path;
 }
-
 const lfGroup={el:document.querySelector('#lfLogos'),count:0,total:2};
 const lfSep=document.querySelector('#lfSep');
-
-smartLogo($('#brandMark'),LOGO_PATH.mark ,{fallbackMark:true});      // sidebar
-smartLogo($('#lfMark'   ),LOGO_PATH.mark ,{fallbackMark:true});      // login badge
+smartLogo($('#brandMark'),LOGO_PATH.mark ,{fallbackMark:true});
+smartLogo($('#lfMark'   ),LOGO_PATH.mark ,{fallbackMark:true});
 smartLogo($('#lfKemenpu'),LOGO_PATH.kemenpu,{hideSep:lfSep,failGroup:lfGroup});
 smartLogo($('#lfBbws'   ),LOGO_PATH.bbws   ,{failGroup:lfGroup});
-smartLogo($('#camWMLogo'),LOGO_PATH.kemenpu,{});                     // preview kamera
-
-/* Logo untuk watermark canvas — preloaded */
-const LOGO_IMG=new Image();
-LOGO_IMG.src=LOGO_PATH.kemenpu;
-
-/* Rounded-rect helper untuk pill latar logo */
+smartLogo($('#camWMLogo'),LOGO_PATH.kemenpu,{});
+const LOGO_IMG=new Image();LOGO_IMG.src=LOGO_PATH.kemenpu;
 function rr(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);
  ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+
+/* ============ FOTO PETUGAS & PINTU AIR (dengan fallback) ============ */
+const slugK=k=>k.toLowerCase().replace(/[^a-z0-9]+/g,'-');
+const slugN=n=>n.toLowerCase().replace(/[^a-z0-9]+/g,'-');
+function avatarSVG(nm){return 'data:image/svg+xml;utf8,'+encodeURIComponent(
+ `<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'>`+
+ `<defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#FFD75E'/><stop offset='1' stop-color='#F0A500'/></linearGradient></defs>`+
+ `<rect width='120' height='120' fill='url(#g)'/>`+
+ `<text x='60' y='74' font-size='42' font-weight='800' font-family='Arial' fill='#1B3C87' text-anchor='middle'>${initials(nm)}</text></svg>`);}
+function gateFallback(kode){return 'data:image/svg+xml;utf8,'+encodeURIComponent(
+ `<svg xmlns='http://www.w3.org/2000/svg' width='480' height='300' viewBox='0 0 480 300'>`+
+ `<defs><linearGradient id='w' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#DCE6FA'/><stop offset='1' stop-color='#B9CDEB'/></linearGradient></defs>`+
+ `<rect width='480' height='300' fill='url(#w)'/>`+
+ `<rect x='150' y='70' width='180' height='150' rx='10' fill='#1B3C87' opacity='.85'/>`+
+ `<rect x='185' y='90' width='50' height='110' rx='6' fill='#F2B705'/>`+
+ `<rect x='245' y='90' width='50' height='110' rx='6' fill='#F2B705'/>`+
+ `<path d='M60 260c30-40 70-40 100 0s70 40 100 0 70-40 100 0' stroke='#5B8DEF' stroke-width='8' fill='none' opacity='.6'/>`+
+ `<text x='240' y='258' font-size='26' font-weight='800' font-family='Arial' fill='#1B3C87' text-anchor='middle'>${kode}</text></svg>`);}
+function fotoSrc(type,id){
+ if(type==='gate'){const g=GATES.find(x=>x.kode===id);
+  return {src:'assets/gate/'+slugK(g.kode)+'.jpg',fb:gateFallback(g.kode)};}
+ const g=GATES.find(x=>x.kode===id);const nm=g.pp.replace('POB ','');
+ return {src:'assets/foto-ppa/'+slugN(nm)+'.jpg',fb:avatarSVG(nm)};}
+function hydrateFoto(root){
+ root.querySelectorAll('img[data-foto]').forEach(im=>{
+  const [t,id]=im.dataset.foto.split('|');
+  const {src,fb}=fotoSrc(t,id);
+  im.onerror=()=>{im.onerror=null;im.src=fb;};
+  im.src=src;});}
+window.viewFoto=(type,id)=>{
+ const g=GATES.find(x=>x.kode===id);if(!g)return;
+ let title,capTxt;const {src,fb}=fotoSrc(type,id);
+ if(type==='gate'){title='Foto Pintu Air';capTxt=g.kode+' · '+g.tipe+' · '+g.di+' · '+g.korsda;}
+ else{const nm=g.pp.replace('POB ','');title='Foto Petugas';capTxt=nm+' · '+(g.tipe==='Bendung'?'Petugas Operasional Bendung':'Petugas Pintu Air')+' · '+g.di;}
+ $('#fotoTitle').textContent=title;
+ const img=$('#fotoImg');
+ img.onerror=()=>{img.onerror=null;img.src=fb;};
+ img.src=src;
+ $('#fotoCap').textContent=capTxt;
+ $('#fotoModal').classList.add('open');icons();};
 
 /* ============ LOGIN / SESSION ============ */
 function renderQacc(){$('#qacc').innerHTML=Object.keys(ACC).map(u=>
@@ -1485,6 +1556,18 @@ function applyRole(){
  $('#kAv').textContent=initials(S.user.nama);
  $('#kStat').textContent=S.role==='admin'?'Administrator':(S.role==='pimpinan'?'Pimpinan Unit':'Pegawai OP3');
  $('#bNip2').textContent=S.user.nip;$('#bJab').textContent=S.user.jabatan;$('#bDi').textContent=S.user.di;
+ /* Default scope peta per role */
+ if(S.role==='admin'||S.role==='pimpinan')S.mapScope='all';
+ else if(S.role==='pengamat'||S.role==='pob')S.mapScope='di:'+S.user.di;
+ else S.mapScope='mine';
+ S.korsda='all';S.ft='all';S.selGate=null;
+ $('#mapRoleNote').textContent={
+  admin:'Melihat seluruh titik wilayah OP3',
+  pimpinan:'Melihat seluruh titik wilayah OP3',
+  pengamat:'Melihat titik di D.I Anda — filter per KorSDA tersedia',
+  pob:'Melihat titik di D.I Anda',
+  ppa:'Utamakan lokasi kerja Anda — D.I Anda juga tersedia',
+  pekerja:'Utamakan lokasi kerja Anda — D.I Anda juga tersedia'}[S.role];
  if(S.role!=='admin'&&$('#pg-admin').classList.contains('active'))go('dashboard');
  renderAll();}
 
@@ -1495,26 +1578,26 @@ function initMaps(){
   $('#pmap').innerHTML='<div class="map-fallback">Peta lokasi presensi.</div>';renderGateSide();return;}
  map=L.map('map',{scrollWheelZoom:false}).setView([-8.462,114.165],12);
  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap'}).addTo(map);
- [{n:'DI BARU',col:'#1B3C87',c:[[-8.424,114.092],[-8.424,114.162],[-8.456,114.162],[-8.456,114.092]]},
-  {n:'DI POROLINGGO',col:'#F0A500',c:[[-8.424,114.162],[-8.424,114.238],[-8.462,114.238],[-8.462,114.162]]},
-  {n:'DI SETAIL TEKNIK',col:'#0EA5E9',c:[[-8.456,114.092],[-8.456,114.172],[-8.499,114.172],[-8.499,114.092]]},
-  {n:'DI KALI SETAIL',col:'#8B5CF6',c:[[-8.462,114.162],[-8.462,114.238],[-8.499,114.238],[-8.499,114.162]]}]
- .forEach(z=>{L.polygon(z.c,{color:z.col,weight:1.4,fillOpacity:.06,dashArray:'5 6'}).addTo(map)
+ [{n:'DI BARU',c:[[-8.424,114.092],[-8.424,114.162],[-8.456,114.162],[-8.456,114.092]]},
+  {n:'DI POROLINGGO',c:[[-8.424,114.162],[-8.424,114.238],[-8.462,114.238],[-8.462,114.162]]},
+  {n:'DI SETAIL TEKNIK',c:[[-8.456,114.092],[-8.456,114.172],[-8.499,114.172],[-8.499,114.092]]},
+  {n:'DI KALI SETAIL',c:[[-8.462,114.162],[-8.462,114.238],[-8.499,114.238],[-8.499,114.162]]}]
+ .forEach(z=>{L.polygon(z.c,{color:DICOL[z.n.charAt(0)+z.n.slice(1).toLowerCase().replace(/\b\w/g,c=>c.toUpperCase())]||'#1B3C87',weight:1.4,fillOpacity:.06,dashArray:'5 6'}).addTo(map)
   .bindTooltip(z.n,{permanent:true,direction:'center',className:'zone-lab'});});
  GATES.forEach(g=>{const col=g.tipe==='Bendung'?'#F0A500':'#1B3C87';
-  const m=L.circleMarker(g.coord,{radius:9,color:'#fff',weight:2.5,fillColor:col,fillOpacity:1}).addTo(map);
+  const m=L.circleMarker(g.coord,{radius:9,color:'#fff',weight:2.5,fillColor:col,fillOpacity:1});
   m.bindTooltip(g.kode,{className:'gate-tip',direction:'top'});
-  m.on('click',()=>selectGate(g));glayers.push({g,m});});
+  m.on('click',()=>selectGate(g));
+  glayers.push({g,m});});
  pmap=L.map('pmap',{zoomControl:false,dragging:false,scrollWheelZoom:false,doubleClickZoom:false}).setView(office,15);
  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OSM'}).addTo(pmap);
  L.circle(office,{radius:200,color:'#12A150',fillOpacity:.08,weight:1.5}).addTo(pmap);
  L.circleMarker(office,{radius:8,color:'#fff',weight:2,fillColor:'#12A150',fillOpacity:1}).addTo(pmap).bindTooltip('Kantor OP3',{className:'gate-tip',direction:'top'});
  userMk=L.circleMarker([-8.4373,114.1801],{radius:9,color:'#fff',weight:2.5,fillColor:'#1B3C87',fillOpacity:1}).addTo(pmap);
  updDist([-8.4373,114.1801]);
- renderGateSide();
- $('#mapCount').textContent=GATES.length+' titik terdata';
+ syncLayers();renderGateSide();
  $('#hsTitik').textContent=GATES.length+' lokasi';}
-/* updDist — menerima array ATAU objek LatLng Leaflet */
+/* updDist — menerima array ATAU LatLng Leaflet */
 function updDist(ll){
  const lat=(ll&&typeof ll.lat==='number')?ll.lat:(ll?ll[0]:null);
  const lng=(ll&&typeof ll.lng==='number')?ll.lng:(ll?ll[1]:null);
@@ -1531,67 +1614,136 @@ function updDist(ll){
  navigator.geolocation.getCurrentPosition(p=>{const ll=[p.coords.latitude,p.coords.longitude];
   userMk.setLatLng(ll);pmap.setView(ll,16);updDist(ll);},()=>toast('Izin lokasi ditolak — memakai posisi demo'));};
 
-/* --- Panel samping peta --- */
+/* ---------- SCOPE & FILTER PETA PER ROLE ---------- */
+const isMine=g=>g.pp===S.user.nama;
+function scopeMatch(g){
+ if(S.mapScope==='all')return true;
+ if(S.mapScope==='mine')return isMine(g);
+ if(S.mapScope.startsWith('di:'))return g.di===S.mapScope.slice(3);
+ return true;}
+const typeOK=g=>S.ft==='all'||g.tipe===S.ft;
+const korsOK=g=>S.korsda==='all'||g.korsda===S.korsda;
+const visibleGates=()=>GATES.filter(g=>scopeMatch(g)&&typeOK(g)&&korsOK(g));
+function scopeChips(){
+ if(S.role==='admin'||S.role==='pimpinan')
+  return [{k:'all',l:'Semua D.I'},...DIs.map(d=>({k:'di:'+d,l:d.replace('DI ','')}))];
+ if(S.role==='pengamat'||S.role==='pob')
+  return [{k:'di:'+S.user.di,l:'D.I Saya',lock:true}];
+ return [{k:'mine',l:'Lokasi Saya'},{k:'di:'+S.user.di,l:'D.I Saya'}];}
+function scopeLabel(){
+ if(S.mapScope==='all')return 'Semua D.I';
+ if(S.mapScope==='mine')return 'Lokasi Saya';
+ return S.mapScope.slice(3);}
+function syncLayers(){
+ if(!map)return;
+ glayers.forEach(({g,m})=>{
+  const vis=scopeMatch(g)&&typeOK(g)&&korsOK(g);
+  if(vis&&!map.hasLayer(m))m.addTo(map);
+  if(!vis&&map.hasLayer(m))map.removeLayer(m);});}
+
+/* ---------- PANEL: LEGENDA BARU + DAFTAR TITIK ---------- */
 function renderGateSide(){
- const GL=GATES.filter(g=>S.ft==='all'||g.tipe===S.ft);
+ const VIS=visibleGates();
+ const chips=scopeChips();
+ const korsAllowed=['admin','pimpinan','pengamat'].includes(S.role);
+ const korsSet=[...new Set(GATES.filter(scopeMatch).map(g=>g.korsda))].sort();
+ const perDI=DIs.map(d=>({d,n:GATES.filter(g=>g.di===d&&typeOK(g)&&korsOK(g)).length}));
+ const canPickDI=S.role==='admin'||S.role==='pimpinan'||S.role==='ppa'||S.role==='pekerja';
+
  $('#gateDetail').innerHTML=`
-  <div class="gd-box" style="padding:.85rem .95rem;flex:none">
-   <b style="font-size:.85rem">Legenda</b>
-   <div style="display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.5rem">
-    <span class="badge b-nav" style="display:inline-flex;align-items:center;gap:.35rem"><i style="width:.55rem;height:.55rem;border-radius:50%;background:#1B3C87;display:inline-block"></i>Pintu Air</span>
-    <span class="badge b-warn" style="display:inline-flex;align-items:center;gap:.35rem"><i style="width:.55rem;height:.55rem;border-radius:50%;background:#F0A500;display:inline-block"></i>Bendung</span>
+  <div class="lgd">
+   <div class="lgd-hd"><i data-lucide="sliders-horizontal"></i>Legenda & Tampilan
+    <span class="cnt">${VIS.length} titik</span></div>
+   <div>
+    <div class="lbl">Cakupan</div>
+    <div class="lgd-chips" id="lgScope">
+     ${chips.map(c=>`<button class="lchip ${S.mapScope===c.k?'on':''} ${c.lock?'lock':''}" data-sc="${c.k}">${c.l}</button>`).join('')}
+    </div>
    </div>
-   <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.55rem">
-    ${[['DI Baru','#1B3C87'],['DI Porolinggo','#F0A500'],['DI Setail Teknik','#0EA5E9'],['DI Kali Setail','#8B5CF6']]
-     .map(z=>`<span style="display:inline-flex;align-items:center;gap:.3rem;font-size:.62rem;font-weight:800;color:var(--mut)"><i style="width:.55rem;height:.55rem;border-radius:.2rem;background:${z[1]};display:inline-block"></i>${z[0]}</span>`).join('')}
+   ${korsAllowed?`<div>
+    <div class="lbl">KorSDA</div>
+    <div class="lgd-chips" id="lgKors">
+     <button class="lchip ${S.korsda==='all'?'on':''}" data-kd="all">Semua</button>
+     ${korsSet.map(k=>`<button class="lchip ${S.korsda===k?'on':''}" data-kd="${k}">${k}</button>`).join('')}
+    </div></div>`:''}
+   <div>
+    <div class="lbl">Jenis Bangunan</div>
+    <div class="lgd-chips" id="lgType">
+     <button class="lchip ${S.ft==='all'?'on':''}" data-ft="all">Semua</button>
+     <button class="lchip ${S.ft==='Pintu Air'?'on':''}" data-ft="Pintu Air"><i style="display:inline-block;width:.45rem;height:.45rem;border-radius:50%;background:#1B3C87;margin-right:.3rem;vertical-align:middle"></i>Pintu Air</button>
+     <button class="lchip ${S.ft==='Bendung'?'on':''}" data-ft="Bendung"><i style="display:inline-block;width:.45rem;height:.45rem;border-radius:50%;background:#F0A500;margin-right:.3rem;vertical-align:middle"></i>Bendung</button>
+    </div>
+   </div>
+   <div>
+    <div class="lbl">Wilayah D.I ${canPickDI?'(klik untuk filter)':''}</div>
+    <div class="lgd-rows">
+     ${perDI.map(x=>{
+      const allowed=canPickDI&&(S.role==='admin'||S.role==='pimpinan'||x.d===S.user.di);
+      return `<button class="lgd-row ${S.mapScope==='di:'+x.d?'on':''} ${allowed?'':'dis'}" ${allowed?`data-di="${x.d}"`:''}>
+       <i style="background:${DICOL[x.d]}"></i>${x.d.replace('DI ','')}<b>${x.n}</b></button>`;}).join('')}
+    </div>
    </div>
   </div>
-  <small style="font-weight:800;color:var(--mut);letter-spacing:.5px;padding-left:.15rem;flex:none">DAFTAR TITIK (${GL.length})</small>
+  <small style="font-weight:800;color:var(--mut);letter-spacing:.5px;padding-left:.15rem;flex:none">DAFTAR TITIK — ${scopeLabel().toUpperCase()} (${VIS.length})</small>
   <div class="glist">
-   ${GL.map(g=>`<button class="grow" onclick="window.__gd('${g.kode}')">
-    <span class="gdot" style="background:${g.tipe==='Bendung'?'#F0A500':'#1B3C87'}"></span>
-    <span class="gmain"><b>${g.kode}</b><small>${g.di} · ${g.luas||'Bendung utama'}</small></span>
-    <span class="badge ${bcl(g.kond)}">${g.kond}</span></button>`).join('')}
+   ${VIS.length?VIS.map(g=>`
+    <button class="grow ${S.selGate===g.kode?'sel':''}" onclick="window.__gd('${g.kode}')">
+     <span class="gdot" style="background:${g.tipe==='Bendung'?'#F0A500':'#1B3C87'}"></span>
+     <span class="gav"><img alt="${g.pp}" data-foto="ppa|${g.kode}"></span>
+     <span class="gmain"><b>${g.kode}</b><small>${g.di.replace('DI ','')} · ${g.korsda} · ${g.luas||'Bendung utama'}</small></span>
+     <span class="badge ${bcl(g.kond)}">${g.kond}</span>
+     <span class="gcam" title="Lihat foto pintu air" onclick="event.stopPropagation();window.viewFoto('gate','${g.kode}')"><i data-lucide="camera"></i></span>
+    </button>`).join('')
+   :`<p style="color:var(--mut);font-size:.76rem;padding:.5rem">Tidak ada titik pada filter ini.${S.mapScope==='mine'?' Coba beralih ke <b>D.I Saya</b>.':''}</p>`}
   </div>`;
+ hydrateFoto($('#gateDetail'));
+ /* wiring chips */
+ $$('#lgScope .lchip').forEach(c=>c.onclick=()=>{if(c.classList.contains('lock'))return;
+  S.mapScope=c.dataset.sc;S.selGate=null;syncLayers();renderGateSide();});
+ $$('#lgKors .lchip').forEach(c=>c.onclick=()=>{S.korsda=c.dataset.kd;S.selGate=null;syncLayers();renderGateSide();});
+ $$('#lgType .lchip').forEach(c=>c.onclick=()=>{S.ft=c.dataset.ft;S.selGate=null;syncLayers();renderGateSide();});
+ $$('#gateDetail .lgd-row[data-di]').forEach(r=>r.onclick=()=>{S.mapScope='di:'+r.dataset.di;S.selGate=null;syncLayers();renderGateSide();});
  icons();}
+
 function selectGate(g){
  if(map)map.flyTo(g.coord,14,{duration:.8});
+ S.selGate=g.kode;
  $('#gateDetail').innerHTML=`
-  <button class="btn btn-o" onclick="window.backGates()" style="padding:.55rem .8rem;font-size:.76rem;align-self:flex-start;flex:none"><i data-lucide="arrow-left"></i>Semua Titik</button>
+  <button class="btn btn-o" onclick="window.backGates()" style="padding:.5rem .75rem;font-size:.74rem;align-self:flex-start;flex:none"><i data-lucide="arrow-left"></i>Semua Titik</button>
   <div class="glist">
+   <div class="gd-photo" onclick="window.viewFoto('gate','${g.kode}')" title="Klik untuk perbesar">
+    <img alt="Foto ${g.kode}" data-foto="gate|${g.kode}">
+    <span><i data-lucide="camera"></i>Lihat Foto Pintu Air</span>
+   </div>
    <div class="gd-box">
     <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem">
      <b style="font-size:.95rem">${g.kode}</b><span class="badge ${bcl(g.kond)}">${g.kond}</span></div>
     <div style="display:flex;gap:.35rem;margin:.45rem 0 .7rem;flex-wrap:wrap">
-     <span class="badge b-nav">${g.tipe}</span><span class="badge b-mut">${g.di}</span></div>
+     <span class="badge b-nav">${g.tipe}</span><span class="badge b-mut">${g.di}</span><span class="badge b-sky">KorSDA: ${g.korsda}</span></div>
     <div class="spec">
      <div><small>Luas Baku</small><b>${g.luas||'—'}</b></div>
      <div><small>Debit Rencana</small><b>${g.debit}</b></div>
      <div><small>Koordinat</small><b style="font-size:.7rem">${g.coord[0].toFixed(5)}, ${g.coord[1].toFixed(5)}</b></div>
-     <div><small>KorSDA</small><b style="font-size:.78rem">Bangorejo</b></div>
+     <div><small>KorSDA</small><b style="font-size:.78rem">${g.korsda}</b></div>
     </div>
    </div>
    <div class="gd-box" style="display:flex;flex-direction:column;gap:.6rem">
     <small style="font-weight:800;color:var(--mut);letter-spacing:.5px">PETUGAS</small>
-    <div style="display:flex;gap:.7rem;align-items:center">
-     <span class="av" style="width:2.5rem;height:2.5rem;font-size:.72rem">${initials(g.pp.replace('POB ',''))}</span>
-     <div><b style="font-size:.82rem">${g.pp}</b><br><small style="color:var(--mut);font-weight:700">${g.tipe==='Bendung'?'Petugas Operasional Bendung':'Petugas Pintu Air'}</small></div>
+    <div class="gd-pet">
+     <span class="gav" onclick="window.viewFoto('ppa','${g.kode}')" title="Klik untuk lihat foto petugas">
+      <img alt="${g.pp}" data-foto="ppa|${g.kode}"></span>
+     <div style="flex:1;min-width:0"><b style="font-size:.82rem">${g.pp}</b><br>
+      <small style="color:var(--mut);font-weight:700">${g.tipe==='Bendung'?'Petugas Operasional Bendung':'Petugas Pintu Air'}</small></div>
+     <button class="gcam" onclick="window.viewFoto('ppa','${g.kode}')" title="Lihat foto petugas"><i data-lucide="user-round"></i></button>
     </div>
     <button class="btn btn-o" onclick="go('laporan')" style="width:100%;padding:.55rem"><i data-lucide="clipboard-list"></i>Lihat Laporan</button>
     <button class="btn btn-n" onclick="openChat()" style="width:100%;padding:.55rem"><i data-lucide="message-circle"></i>Chat Petugas</button>
    </div>
   </div>`;
+ hydrateFoto($('#gateDetail'));
  icons();}
-window.backGates=()=>{if(map)map.flyTo([-8.462,114.165],12,{duration:.8});renderGateSide();};
+window.backGates=()=>{if(map)map.flyTo([-8.462,114.165],12,{duration:.8});S.selGate=null;renderGateSide();};
 window.__gd=kode=>{go('dashboard');setTimeout(()=>{const g=GATES.find(x=>x.kode===kode);if(g)selectGate(g);},180);};
-/* Filter chip peta — guard + urutan m.addTo(map) yang benar */
- $('#mapChips').querySelectorAll('.fchip').forEach(c=>c.onclick=()=>{
- $('#mapChips').querySelectorAll('.fchip').forEach(x=>x.classList.remove('on'));c.classList.add('on');
- S.ft=c.dataset.ft;
- if(map){glayers.forEach(({g,m})=>{const vis=S.ft==='all'||g.tipe===S.ft;
-  if(vis&&!map.hasLayer(m))m.addTo(map);
-  if(!vis&&map.hasLayer(m))map.removeLayer(m);});}
- renderGateSide();});
 
 /* ============ LAPKIN ============ */
 function renderLapkin(){
@@ -1623,7 +1775,6 @@ function renderTugas(){$('#tugasList').innerHTML=S.tugas.map(t=>`
  <div class="rmain" style="${t.done?'text-decoration:line-through;opacity:.55':''}"><b style="white-space:normal">${t.txt}</b><span>Tenggat: ${t.due} • dari ${t.by}</span></div></div>`).join('')||'<p style="color:var(--mut);font-size:.8rem">Belum ada tugas.</p>';icons();}
 window.tgDone=id=>{const t=S.tugas.find(x=>x.id===id);t.done=!t.done;renderTugas();renderMini();save();if(t.done)toast('Tugas ditandai selesai');};
 
-/* --- APPROVAL 2 TAB (Laporan | Presensi & Surat) --- */
  $$('#apTabs button').forEach(b=>b.onclick=()=>{
  $$('#apTabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
  S.appTab=b.dataset.at;
@@ -1635,8 +1786,7 @@ function renderAppr(){
  $('#appCount').textContent=(lapWait.length+presWait.length)+' menunggu';
  $('#appLap').innerHTML=lapWait.map(r=>`
   <div class="rrow"><div class="ric" style="background:#FEF3DC;color:#B45309"><i data-lucide="clock"></i></div>
-  <div style="flex:1;min-width:0"><div class="rmain"><b>${r.judul}</b><span>${r.lok} • ${r.di}</span></div>
-  ${r.status==='Perlu Revisi'&&r.rev_note?`<div class="revnote"><i data-lucide="message-square-warning"></i><span>Menunggu perbaikan: ${r.rev_note}</span></div>`:''}</div>
+  <div style="flex:1;min-width:0"><div class="rmain"><b>${r.judul}</b><span>${r.lok} • ${r.di}</span></div></div>
   <div style="display:flex;gap:.4rem"><button class="btn btn-n" style="padding:.5rem .75rem" onclick="appr('${r.id}')"><i data-lucide="check"></i></button>
   <button class="btn btn-d" style="padding:.5rem .75rem" onclick="openRev('${r.id}')"><i data-lucide="rotate-ccw"></i></button></div></div>`).join('')
   ||'<p style="color:var(--mut);font-size:.8rem">Semua laporan sudah diverifikasi 🎉</p>';
@@ -1662,7 +1812,6 @@ window.apprPres=(id,ok)=>{const p=S.pres.find(x=>x.id===id);
  p.status=ok?'Disetujui':'Ditolak';p.rev_note=ok?null:'Surat/lampiran tidak lengkap';
  renderAppr();renderPres();renderMini();save();
  toast(ok?'Pengajuan "'+p.jenis+'" disetujui':'Pengajuan ditolak');};
-/* --- Modal revisi --- */
 let REV={id:null};
 function openRev(id){REV.id=id;
  const r=S.riwayat.find(x=>x.id===id);
@@ -1697,7 +1846,6 @@ function renderDebitLog(){$('#dlog').innerHTML=[...S.debits].reverse().slice(0,5
  <div class="rrow"><div class="ric" style="background:#FEF3DC;color:#B45309"><i data-lucide="waves"></i></div>
  <div class="rmain"><b>${d.h.toFixed(2)} m</b><span>TMA • pukul ${d.t}</span></div>
  <span style="font-weight:800;color:var(--navy);font-size:.8rem">${d.d.toFixed(1)} m³/s</span></div>`).join('');icons();}
-/* --- ALERT DEBIT --- */
 function renderDebitAlert(){const el=$('#debitAlert');const last=S.debits[S.debits.length-1];
  if(!last){el.innerHTML='';return;}
  if(last.d>DEBITCFG.max){el.innerHTML=`<div class="alertb red"><i class="ic"><i data-lucide="triangle-alert"></i></i>
@@ -1795,7 +1943,7 @@ function updPresBtns(){$('#btnIn').disabled=!!S.in;$('#btnOut').disabled=!S.in;
  $('#outTime').textContent=S.out?('Check Out '+fmtT(S.out)):'Belum Check Out';
  $('#outTime').className='badge '+(S.out?'b-ok':'b-mut');}
 
-/* --- MATRIKS ABSENSI (deterministik; nanti dari DB) --- */
+/* --- MATRIKS ABSENSI --- */
 function seedStat(nip,day){const h=(nip.charCodeAt(5)*31+day*7)%97;
  if(day%7===6||day%7===0)return 'we';
  if(h<70)return'H';if(h<80)return'T';if(h<84)return'S';if(h<88)return'I';if(h<92)return'D';if(h<95)return'C';return'A';}
@@ -1851,7 +1999,6 @@ function closeCam(){if(S.camStream){S.camStream.getTracks().forEach(t=>t.stop())
   ctx.fillStyle=g;ctx.fillRect(0,0,720,960);
   ctx.fillStyle='rgba(255,255,255,.12)';ctx.font='700 34px system-ui';ctx.textAlign='center';
   ctx.fillText('SIMULASI KAMERA',360,470);}
- /* ===== WATERMARK LOGO KEMENPU — pojok kanan atas ===== */
  if(LOGO_IMG.complete&&LOGO_IMG.naturalWidth>0){
   const h=52, w=h*LOGO_IMG.naturalWidth/LOGO_IMG.naturalHeight;
   const pad=12, x=720-(w+pad*2)-18, y=20;
@@ -1860,7 +2007,6 @@ function closeCam(){if(S.camStream){S.camStream.getTracks().forEach(t=>t.stop())
   rr(ctx,x,y,w+pad*2,h+pad*2,14);ctx.fill();
   ctx.drawImage(LOGO_IMG,x,y,w,h);
   ctx.globalAlpha=1;}
- /* ===== akhir blok logo ===== */
  const n=new Date();ctx.textAlign='left';
  ctx.fillStyle='rgba(0,0,0,.38)';ctx.fillRect(0,820,720,140);
  ctx.fillStyle='#fff';ctx.font='700 26px system-ui';ctx.fillText(S.user?S.user.nama:'',28,860);
@@ -1949,7 +2095,6 @@ window.empDel=i=>{if(confirm('Hapus '+EMP[i].nama+'?')){EMP.splice(i,1);renderEm
  $('#fEmp').onsubmit=e=>{e.preventDefault();
  EMP.push({nip:$('#eNip3').value,nama:$('#eNama').value.toUpperCase(),jabatan:$('#eJab').value,di:$('#eDi').value});
  $('#empModal').classList.remove('open');e.target.reset();renderEmp();toast('Pegawai ditambahkan');};
-/* Akun */
 function renderAcc(){$('#accTbody').innerHTML=Object.entries(ACC).map(([u,a])=>`
  <tr><td><b>${u}</b></td><td>${a.nama}</td><td><span class="badge b-nav">${a.role}</span></td>
  <td><span class="badge ${a.aktif?'b-ok':'b-bad'}">${a.aktif?'Aktif':'Nonaktif'}</span></td>
@@ -1979,9 +2124,10 @@ document.addEventListener('click',e=>{if(!e.target.closest('.top-search'))$('#sr
 
 /* ============ INIT ============ */
  $$('[data-close]').forEach(x=>x.onclick=()=>x.closest('.modal').classList.remove('open'));
-function renderAll(){renderRwy();renderTugas();renderAppr();renderAllRep();renderChain();renderDebitLog();renderDebitAlert();
- renderMini();renderPres();renderCuti();renderSk();renderDocs();renderEmp();renderAcc();renderNotif();updPresBtns();}
-/* Sesi aktif? */
+function renderAll(){
+ renderRwy();renderTugas();renderAppr();renderAllRep();renderChain();renderDebitLog();renderDebitAlert();
+ renderMini();renderPres();renderCuti();renderSk();renderDocs();renderEmp();renderAcc();renderNotif();updPresBtns();
+ renderGateSide();}
 const sess=(()=>{try{return JSON.parse(localStorage.getItem('siap_session'));}catch(e){return null;}})();
 if(sess&&ACC[sess.u]&&ACC[sess.u].aktif){
  S.username=sess.u;S.role=sess.role;S.user=ROLES[sess.role];
